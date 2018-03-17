@@ -1,3 +1,7 @@
+/**
+ * \file main.cpp
+ * \brief Programme de test
+ */
 #include<iostream>
 #include <stdlib.h>
 #include <time.h>
@@ -10,7 +14,13 @@
 
 using namespace std;
 
-
+/**
+ * Programme de test principal
+ * @method main
+ * @param  argc Nombre d'arguments
+ * @param  argv Tableaux d'arguments
+ * @return      Code de fin d'execution
+ */
 int main ( int argc, char ** argv){
   string input;
   int mode;
@@ -65,10 +75,10 @@ printVec(testtab);
 
   Neurone * boii = new Neurone(testtab[0].size());
 boii->printWeight();
-  double mu = 0.0005;
+  double mu = 0.005;
   double meanError;
   cout<<"Training Started..."<<endl;
-  for (unsigned int i=0; i < 10000; i ++){
+  for (unsigned int i=0; i < 50000; i ++){
     swapVec(&testtab,&result);
     meanError = 0;
     for (unsigned int j =0; j < result.size();j++){

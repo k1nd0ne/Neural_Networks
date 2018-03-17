@@ -1,2 +1,0 @@
-# Backpropagation_TER
-coucou
