@@ -3,11 +3,13 @@
 #include<vector>
 #include"../Neurone/Neurone.h"
 #include"../Layer/Layer.h"
-
+#include"../Common/fonctions.h"
 class Reseau{
 
 
 private:
+  std::vector<double>input;
+  std::vector<double>output;
   std::vector<Layer*> reseau; //Vector containing all the layers (input/hide/output)
   int nbLayers;	//indicating the number of layers you want;
 
@@ -17,9 +19,9 @@ private:
 
 
   //Methods
-  std::vector<float> fire_all(std::vector<float> input);
-  void learn(std::vector<std::vector<std::vector<double>>> jeuxTest);
-
+  std::vector<double> fire_all(std::vector<double> input, double k);
+  void learn(std::vector<std::vector<std::vector<double> > > jeuxTest);
+  void backPropagation(std::vector<double> output, double k, double eta);
 
 };
 

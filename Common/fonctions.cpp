@@ -1,7 +1,3 @@
-/**
- * \file fonctions.cpp
- * \brief Classe de fonctions pour l'utilisation des Neurones
- */
 #include "fonctions.h"
 #include<iostream>
 #include <fstream>
@@ -13,22 +9,12 @@
 
 using namespace std;
 
-/**
- * Fonction d'affichage d'un vecteur simple
- * @method printVec
- * @param  vec      Vecteur à afficher
- */
 void printVec (std::vector<double> vec){
   for (unsigned int i=0;i<vec.size();i++){
     std::cout<<vec[i]<<",";
   }
 }
 
-/**
- * Fonction d'affichage d'un vecteur de vecteurs
- * @method printVec
- * @param  vec      Vecteur de vecteurs à afficher
- */
 void printVec (std::vector<std::vector<double> > vec){
   for (unsigned int i=0;i<vec.size();i++){
     for (unsigned int j=0;j<vec[i].size();j++){
@@ -38,39 +24,49 @@ void printVec (std::vector<std::vector<double> > vec){
   }
 }
 
-/**
- * Fonction de récupération des inputs
- * @method getInput
- * @param  fileName Nom du fichier de récupération
- * @return Vecteur de vecteurs des informations récupérés
- */
+void printVec (std::vector<std::vector<std::vector<double> > > vec){
+  std::cout<<"<<";
+  for(unsigned int k =0; k < vec.size();k++){
+  for (unsigned int i=0;i<vec[k].size();i++){
+    for (unsigned int j=0;j<vec[k][i].size();j++){
+      std::cout<<vec[k][i][j]<<",";
+    }
+    std::cout<<">,<";
+    //std::cout<<endl<<"----------"<<std::endl;
+  }
+std::cout<<">>"<<endl;}
+}
+
 vector< vector <double> > getInput(char const * fileName){
 
-  ifstream fichier(fileName, ios::in);  // on ouvre le fichier en lecture
   ifstream in(fileName); //on veut aussi ouvrir pour connaitre la taille du fichier
   string ligne;
   int nbLignes = 0;
   while(std::getline(in, ligne))
   nbLignes++; //on compte les lignes...
   in.close(); //et on ferme le fichier
+  ifstream fichier(fileName, ios::in);  // on ouvre le fichier en lecture
 
   if(fichier){
     vector< vector <double> > stock(nbLignes); //Tableau de chaine de caractère qui va contenir tout le fichier ligne par ligne.
     cout << "fichier ouvert avec success , nbLignes= " <<nbLignes<< endl;
     string s;
-    double temp = 0;
+    double temp = 1;
     string ligne;
 
     for (int j = 0; j < nbLignes; j++) {
       fichier>>ligne;
       stringstream ss(ligne);
       while (getline(ss, s, ',')) {  //strinsplit à partir du caractère ','
-      temp = ::atof(s.c_str());
+      temp = atof(s.c_str());
+      cout<<temp<<" ";
       stock[j].push_back(temp); //on stock chaque information dans une case.
     }
+    cout<<endl;
   }
 
   fichier.close();  // on ferme le fichier
+  //printVec(stock);
   return stock;
 }
 else {
@@ -81,12 +77,6 @@ else {
 
 }
 
-/**
- * Fonction de récupération des résultats
- * @method extractResult
- * @param  input        Vecteur de vecteurs des résultats à récupérés
- * @return Résultats
- */
 vector <double> extractResult(vector< vector <double> > * input){
   vector<double> res(input->size());
   unsigned int pos =((*input)[0].size())-1;
@@ -97,12 +87,6 @@ vector <double> extractResult(vector< vector <double> > * input){
   return res;
 }
 
-/**
- * Fonction de translation aléatoire synchronisé de deux vecteurs
- * @method swapVec
- * @param  input   Premier vecteur à échanger
- * @param  result  Deuxiéme vecteur à echanger
- */
 void swapVec (std::vector<std::vector<double> > * input, std::vector <double> * result){
   unsigned int r;
   for (unsigned int i=0;i<input->size();i++){
@@ -113,19 +97,12 @@ void swapVec (std::vector<std::vector<double> > * input, std::vector <double> * 
     iter_swap(result->begin() + i ,result->begin() + r);
   }
 }
-
 unsigned int int_to_int(unsigned k) {
   if (k == 0) return 0;
-  if (k == 1) return 1;
+  if (k == 1) return 1;                       /* schlagué */
   return (k % 2) + 10 * int_to_int(k / 2);
 }
 
-/**
- * Fonction de génération de n entrée et de la sortie attendue pour Et ou Ou
- * @method generateInput
- * @param  n             nombre d'entrées
- * @param  estet         ET ?
- */
 std::vector<std::vector<double> > generateInput(int n, bool estet){
   int nbtest = (int)pow(2,n);
 vector< vector < double > >  testtab(nbtest, vector<double>(n,0));

@@ -1,46 +1,16 @@
-/**
- * \file neurone.cpp
- * \brief Classe Neurone
- */
-#include"Neurone.h"
-#include<vector>
+#include"./Neurone.h"
 
-/**
- * Constructeur avec biais et poids aléatoire (Loi normale centrée et réduite)
- * @method Neurone::Neurone
- * @param  taille           Nombre d'entrées
- */
-Neurone::Neurone(int taille) {
+Neurone::Neurone(int taille){
   n = taille;
-  biais = true;
   aleaWeights();
 }
 
-/**
- * Constructeur sans biais
- * @method Neurone::Neurone
- * @param  taille           Nombre d'entrées
- * @param  x                Vecteur de poids
- */
-Neurone::Neurone(int taille, std::vector<double> * x){
-    biais = false;
-  w = x;
-  n = taille;
+Neurone::Neurone(){
 }
 
-/**
- * Constructeur avec biais
- * @method Neurone::Neurone
- * @param  taille           Nombre d'entrées
- * @param  x                Vecteur de poids
- * @param  biais_w          Valeur du biais
- */
-Neurone::Neurone(int taille, std::vector<double> * x, double biais_w){
-    biais = true;
-    n = taille;
-    w = x;
-    w->push_back(biais_w);
-
+Neurone::Neurone(int taille, std::vector<double> * x){
+  w = x;
+  n = taille;
 }
 
 /**
@@ -64,10 +34,6 @@ double Neurone::fw_sum(std::vector<double> x)const{
   double res=0;
   for(int i=0; i<n; i++){
       res += (x[i]) * (*w)[i];
-  }
-
-  if(biais){
-        res += (*w)[n];
   }
   return res;
 }
@@ -108,9 +74,6 @@ void Neurone::learn(std::vector<double> x,double o,double k, double mu){
   for(int i=0; i<n; i++){
       (*w)[i]= (*w)[i]-  mu * (x[i]*derive*((o-res)*(-2)));
   }
-  if(biais){
-      (*w)[n] = (*w)[n]-  mu * (1*derive*((o-res)*(-2)));
-  }
 }
 
 /**
@@ -121,9 +84,6 @@ void Neurone::printWeight(){
     for(int i=0; i<n; i++){
         std::cout << "w" << i << " = " << (*w)[i] << std::endl;
     }
-    if(biais){
-        std::cout << "biais = " << (*w)[n] << std::endl;
-    }
 }
 
 /**
@@ -131,13 +91,18 @@ void Neurone::printWeight(){
  * @method Neurone::aleaWeights
  */
 void Neurone::aleaWeights(){
-  w = new std::vector<double> (n,0.0);
-  std::default_random_engine generator(std::random_device{}());
-  std::normal_distribution<double> distribution(0,1);
-  for (int i=0; i<n; ++i) {
-    (*w)[i] = distribution(generator);
-  }
-  if(biais){
-    (*w).push_back(distribution(generator));
-  }
+  w = new std::vector<double> (n,0.8);
+  // std::default_random_engine generator(std::random_device{}());
+  // std::normal_distribution<double> distribution(0,1);
+  // for (int i=0; i<n; i++) {
+  //   (*w)[i] = distribution(generator);
+  //   std::cout<<(*w)[i]<<std::endl;
+  // }
+}
+
+std::vector<double> * Neurone::getWeight(){
+  return w;
+}
+int Neurone::getNbPoids(){
+  return n;
 }

@@ -8,7 +8,7 @@
 using namespace std;
 
 int main (int argc, char **argv) {
-	
+
 	OptionTab opts;
  	opts.AddOption(Option(1,"--help","-h","NONE","show help"));
 	opts.AddOption(Option(2,"--version","-v","NONE","show the Neurone version"));
@@ -16,13 +16,13 @@ int main (int argc, char **argv) {
 	opts.AddOption(Option(4,"--bias","-b","NONE","Activate the bias"));
 	opts.AddOption(Option(5,"--inputs","-f","STRING","load a csv file containing data"));
 if(argc == 1){
- cout << "No Options entered, Demo Started..."<<endl;	
+ cout << "No Options entered, Demo Started..."<<endl;
 }
 else {
 	for(int i = 1; i != argc; i++) {
         if ((argv[i] == opts.GetIntitul(argv[i]) || argv[i] == opts.GetRaccour(argv[i]))) {
     switch(opts.GetOptionID(argv[i])) {
-	case 1 : 
+	case 1 :
 	 cout << "Usage : ./prog [OPTIONS] " << endl;
 	 cout << "Available options :" << endl;
 	 opts.PrintOptions();
@@ -31,7 +31,7 @@ else {
 	cout << "Boiii Neurone version 1.0" << endl;
 	break;
 	case 3 :
-		cout << "Gaspard Coulet,\nGuyard Félix,\nJean Maurice Raboude,\nAreski Himeur,\nLucas picasarri arieta.\n" << endl; 
+		cout << "Gaspard Coulet,\nFélix Guyard,\nJean Maurice Raboude,\nAreski Himeur,\nLucas Picasarri-Arrieta.\n" << endl;
 	break;
 	case 4 :
 	int choix = 0; int n = 0;
@@ -54,8 +54,8 @@ else {
 	Neurone * boii = new Neurone();
 
 	default:
-	break;  
-	
+	break;
+
 
 	}
 }
@@ -63,9 +63,7 @@ else { cout << "no valid options found, demo starting..." << endl; }
 }
 
 }
-	
+
 return 0;
 
 }
-
-				
