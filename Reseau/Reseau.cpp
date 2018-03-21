@@ -14,7 +14,7 @@ Reseau::Reseau(int nbLayers, std::vector<int> layerInformation){
  reseau[layerInformation.size()-1] = new Layer(Layer::OUTPUT,layerInformation[layerInformation.size()-1],layerInformation[layerInformation.size()-2]);
  //To indicate that the last layer is always the output layer.
 
- for(unsigned int i = 1; i < layerInformation.size(); i++){
+ for(unsigned int i = 1; i < layerInformation.size()-1; i++){
 
 	reseau[i] = new Layer(Layer::HIDDEN,layerInformation[i], layerInformation[i-1]);	//The others are just the 'Hidden' Layers
 
@@ -33,20 +33,15 @@ return input;
 
 void Reseau::learn(std::vector<vector<vector<double> > > jeuxTest){
   for(unsigned int i = 0; i<jeuxTest.size();i++){
-    output=fire_all(jeuxTest[i][0],1.0); //lol c'est un k
-    printVec(output);
-    cout<<"   ";
-    printVec(jeuxTest[i][1]);
-    cout<<endl;
-   backPropagation(jeuxTest[i][1],1.0,0.0005);//lol c'est un eta
+      output=fire_all(jeuxTest[i][0],1.0); //lol c'est un k
+      backPropagation(jeuxTest[i][1],1.0,0.0005);//lol c'est un eta
   }
 }
 
 void Reseau::backPropagation(std::vector<double> output, double k, double eta){
     /*On initialise dans un premier temps nos trois matrices 3d*/
-    cout<<"zbeb"<<endl;
     int NbNeuronesMax = 0;
-    for(int l = nbLayers - 1; l>=0; l--){
+    for(int l = nbLayers - 1; l>0; l--){
         int inter = reseau[l]->getNbNeurones();
         if(inter > NbNeuronesMax){
             NbNeuronesMax = inter;
@@ -58,7 +53,7 @@ void Reseau::backPropagation(std::vector<double> output, double k, double eta){
     derrdact = new double**[nbLayers];
     dsig = new double**[nbLayers];
     dact = new double**[nbLayers];
-    for(int l = nbLayers - 1; l>=0; l--){
+    for(int l = nbLayers - 1; l>0; l--){
         derrdact[l] = new double*[NbNeuronesMax];
         dsig[l] = new double*[NbNeuronesMax];
         dact[l] = new double*[NbNeuronesMax];
@@ -68,15 +63,19 @@ void Reseau::backPropagation(std::vector<double> output, double k, double eta){
             dact[l][i] = new double[NbNeuronesMax];
         }
     }
+    cout<<"Backprop init : ok"<<endl;
 
-
-    for(int l = nbLayers - 1; l>=0; l--){
+    for(int l = nbLayers - 1; l>0; l--){
+        cout<<"Debut backprop pour le layer"<<l<<endl;
         Layer* layerCourant = (reseau[l]);
         for(int n = 0; n < layerCourant->getNbNeurones(); n++){
+            cout<<"Parcours du Neurone "<<n<<" de la couche "<<l<<endl;
             Neurone* neuroneCourant = (layerCourant->getNeurone(n));
             double s = neuroneCourant->fw_sum(layerCourant->getInput());
-
+            cout<<"Traitement des poids : ";
+            int debug =0;
             for(int i=0; i < neuroneCourant->getNbPoids(); i++){
+                cout<<"|";
                 dact[l][n][i] = (layerCourant->getInput())[i];
                 dsig[l][n][i] = s*(1-s);
                 if(l == nbLayers - 1){
@@ -90,19 +89,32 @@ void Reseau::backPropagation(std::vector<double> output, double k, double eta){
                     }
                     derrdact[l][n][i] = inter;
                 }
+                debug = i;
             }
+            cout<<" "<<debug+1<<endl;
         }
     }
 
-    for(int l = nbLayers - 1; l>=0; l--){
+    for(int l = nbLayers - 1; l>0; l--){
         Layer* layerCourant = (reseau[l]);
         for(int n = 0; n < reseau[l]->getNbNeurones(); n++){
             Neurone* neuroneCourant = (layerCourant->getNeurone(n));
             for(int i=0; i < neuroneCourant->getNbPoids(); i++){
                 (*neuroneCourant->getWeight())[i] = (*neuroneCourant->getWeight())[i] - eta*derrdact[l][n][i]*dsig[l][n][i]*dact[l][n][i];
-                printVec(*neuroneCourant->getWeight());
-                cout<<endl;
             }
         }
     }
+    // for(int l = nbLayers - 1; l>0; l--){
+    //     for(int i=0; i<NbNeuronesMax; i++){
+    //          delete[] derrdact[l][i];
+    //          delete[] dsig[l][i];
+    //          delete[] dact[l][i];
+    //     }
+    //     delete[] derrdact[l];
+    //     delete[] dsig[l];
+    //     delete[] dact[l];
+    // }
+    // delete[] derrdact;
+    // delete[] dsig;
+    // delete[] dact;
 }

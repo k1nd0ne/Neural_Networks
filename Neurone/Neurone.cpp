@@ -1,27 +1,41 @@
 #include"./Neurone.h"
 
-Neurone::Neurone(int taille){
-  n = taille;
+/**
+* Constructeur par defauts
+* @method Neurone::Neurone
+*/
+Neurone::Neurone(){
+  n = 0;
+}
+/**
+ * Constructeur par nombre d'entrées
+ * @method Neurone::Neurone
+ * @param  n           Nombre d'entrées
+ */
+Neurone::Neurone(int n){
+  this->n = n;
   aleaWeights();
 }
-
-Neurone::Neurone(){
-}
-
-Neurone::Neurone(int taille, std::vector<double> * x){
+/**
+ * Constructeur par arguments
+ * @method Neurone::Neurone
+ * @param  taille           Nombre d'entrées
+ * @param  x                Vecteur de poids
+ */
+Neurone::Neurone(int n, std::vector<double> * x){
   w = x;
-  n = taille;
+  this->n = n;
 }
 
 /**
- * Méthode retournant  somme
+ * Méthode de propagation en avant
  * @method Neurone::fire
- * @param  x             [description]
- * @param  k             [description]
- * @return               [description]
+ * @param  in            Vecteur d'entrées
+ * @param  k             Coefficient de sigmoid k
+ * @return               Valeur d'activation
  */
-double Neurone::fire(std::vector<double> x, double k)const{
-  return fw_activate(fw_sum(x),k);
+double Neurone::fire(std::vector<double> in, double k)const{
+  return fw_activate(fw_sum(in),k);
 }
 
 /**
@@ -52,7 +66,7 @@ double Neurone::fw_activate(double sum, double k)const{
  * Méthode de dérivation
  * @method Neurone::derive_activate
  * @param  sum                      Valeur de la somme du vecteur (cf Neurone::fw_sum)
- * @param  k                        Valeur du biais
+ * @param  k                        Valeur du coefficient de sigmoid k
  * @return                          Valeur de dérivation
  */
 double Neurone::derive_activate(double sum, double k)const{
@@ -99,10 +113,17 @@ void Neurone::aleaWeights(){
   //   std::cout<<(*w)[i]<<std::endl;
   // }
 }
-
+/**
+ * @method Neurone::getWeight
+ * @return Vecteur de poids
+ */
 std::vector<double> * Neurone::getWeight(){
   return w;
 }
+/**
+ * @method Neurone::getNbPoids
+ * @return Nombre de poids
+ */
 int Neurone::getNbPoids(){
   return n;
 }

@@ -1,0 +1,203 @@
+.TH "Neurone" 3 "Wed Mar 21 2018" "Reseaux Neuronal" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Neurone \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNeuroneB\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBNeurone\fP ()"
+.br
+.ti -1c
+.RI "\fBNeurone\fP (int taille)"
+.br
+.ti -1c
+.RI "\fBNeurone\fP (int taille, std::vector< double > *x)"
+.br
+.ti -1c
+.RI "virtual double \fBfw_sum\fP (std::vector< double > x) const "
+.br
+.ti -1c
+.RI "double \fBfw_activate\fP (double sum, double k) const "
+.br
+.ti -1c
+.RI "virtual double \fBfire\fP (std::vector< double > x, double k) const "
+.br
+.ti -1c
+.RI "virtual void \fBlearn\fP (std::vector< double > x, double o, double k, double mu)"
+.br
+.ti -1c
+.RI "virtual void \fBprintWeight\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBaleaWeights\fP ()"
+.br
+.ti -1c
+.RI "std::vector< double > * \fBgetWeight\fP ()"
+.br
+.ti -1c
+.RI "virtual int \fBgetNbPoids\fP ()"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "double \fBderive_activate\fP (double sum, double k) const "
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::vector< double > * \fBw\fP"
+.br
+.ti -1c
+.RI "int \fBn\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Neurone::Neurone ()"
+Constructeur par defauts  \fBNeurone::Neurone\fP 
+.SS "Neurone::Neurone (int n)"
+Constructeur par nombre d'entrées  \fBNeurone::Neurone\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIn\fP Nombre d'entrées 
+.RE
+.PP
+
+.SS "Neurone::Neurone (int n, std::vector< double > * x)"
+Constructeur par arguments  \fBNeurone::Neurone\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItaille\fP Nombre d'entrées 
+.br
+\fIx\fP Vecteur de poids 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void Neurone::aleaWeights ()\fC [virtual]\fP"
+Méthode de génération de poids aléatoire selon une loi normale centrée réduite  \fBNeurone::aleaWeights\fP 
+.PP
+Reimplemented in \fBNeuroneB\fP\&.
+.SS "double Neurone::derive_activate (double sum, double k) const\fC [protected]\fP"
+Méthode de dérivation  \fBNeurone::derive_activate\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsum\fP Valeur de la somme du vecteur (cf \fBNeurone::fw_sum\fP) 
+.br
+\fIk\fP Valeur du coefficient de sigmoid k 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Valeur de dérivation 
+.RE
+.PP
+
+.SS "double Neurone::fire (std::vector< double > in, double k) const\fC [virtual]\fP"
+Méthode de propagation en avant  \fBNeurone::fire\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIin\fP Vecteur d'entrées 
+.br
+\fIk\fP Coefficient de sigmoid k 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Valeur d'activation 
+.RE
+.PP
+
+.SS "double Neurone::fw_activate (double sum, double k) const"
+Méthode d'activation  \fBNeurone::fw_activate\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsum\fP Valeur de la somme du vecteur (cf \fBNeurone::fw_sum\fP) 
+.br
+\fIk\fP Valeur du biais 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Valeur d'activation 
+.RE
+.PP
+
+.SS "double Neurone::fw_sum (std::vector< double > x) const\fC [virtual]\fP"
+Méthode de somme des valeurs du vecteur  \fBNeurone::fw_sum\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP Vecteur 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Somme 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNeuroneB\fP\&.
+.SS "int Neurone::getNbPoids ()\fC [virtual]\fP"
+\fBNeurone::getNbPoids\fP 
+.PP
+\fBReturns:\fP
+.RS 4
+Nombre de poids 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNeuroneB\fP\&.
+.SS "std::vector< double > * Neurone::getWeight ()"
+\fBNeurone::getWeight\fP 
+.PP
+\fBReturns:\fP
+.RS 4
+Vecteur de poids 
+.RE
+.PP
+
+.SS "void Neurone::learn (std::vector< double > x, double o, double k, double mu)\fC [virtual]\fP"
+Méthode d'apprentissage (cf \fBNeurone::fw_sum\fP, cf \fBNeurone::fw_activate\fP, cf \fBNeurone::derive_activate\fP)  \fBNeurone::learn\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP Vecteur de poids 
+.br
+\fIo\fP Valeur attendue 
+.br
+\fIk\fP Valeur du biais 
+.br
+\fImu\fP Taux d'apprentissage | Learning rate 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNeuroneB\fP\&.
+.SS "void Neurone::printWeight ()\fC [virtual]\fP"
+Affichage des poids  \fBNeurone::printWeight\fP 
+.PP
+Reimplemented in \fBNeuroneB\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Reseaux Neuronal from the source code\&.

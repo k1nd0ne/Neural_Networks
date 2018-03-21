@@ -24,14 +24,13 @@ int main (int agrc, char * argv[]){
   Reseau * rezo = new Reseau(3,archi);
   double k = 1;
   std::vector<vector<double> > training = getInput("./TrainingSets/iris.csv");
-  int epoch = 10;
+  int epoch = 2;
   vector<double> res(3,0);
   int temp;
   vector<vector<vector<double> > > testData(training.size());
 for (unsigned int i = 0; i < training.size(); i++){
   temp=(int)training[i][training[i].size()-1];
   training[i].pop_back();
-cout<<temp<<" slt"<<endl;
     if (temp==1)res = {0,1,0};
     else if (temp==2)res = {0,0,1};
     else res={1,0,0};

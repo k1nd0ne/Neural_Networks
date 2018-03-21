@@ -22,7 +22,7 @@ constructeur, prend en parametres le type du layer, et nombre de neurones le com
 */
 Layer::Layer(TypeLayer type,int nbneur, int nbinput):nbNeurone(nbneur)
 {
-  std::cout<<"Creation "<<std::endl;
+  std::cout<<"Creation d'un layer"<<std::endl;
   membres = std::vector<Neurone*>(nbneur);
   for (int i =0; i < nbneur; i ++){
     membres[i]= new Neurone(nbinput);

@@ -1,0 +1,38 @@
+.TH "Layer" 3 "Wed Mar 21 2018" "Reseaux Neuronal" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Layer \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBTypeLayer\fP { \fBINPUT\fP, \fBOUTPUT\fP, \fBHIDDEN\fP }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBNeurone\fP * \fBgetNeurone\fP (int index)"
+.br
+.ti -1c
+.RI "std::vector< double > \fBfire\fP (std::vector< double >, double)"
+.br
+.ti -1c
+.RI "\fBLayer\fP (TypeLayer, int, int)"
+.br
+.ti -1c
+.RI "int \fBgetNbNeurones\fP ()"
+.br
+.ti -1c
+.RI "std::vector< double > \fBgetInput\fP ()"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Reseaux Neuronal from the source code\&.

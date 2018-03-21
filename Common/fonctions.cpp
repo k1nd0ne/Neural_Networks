@@ -49,7 +49,7 @@ vector< vector <double> > getInput(char const * fileName){
 
   if(fichier){
     vector< vector <double> > stock(nbLignes); //Tableau de chaine de caractère qui va contenir tout le fichier ligne par ligne.
-    cout << "fichier ouvert avec success , nbLignes= " <<nbLignes<< endl;
+    cout << "fichier ouvert avec succés , nbLignes= " <<nbLignes<< endl;
     string s;
     double temp = 1;
     string ligne;
@@ -59,10 +59,8 @@ vector< vector <double> > getInput(char const * fileName){
       stringstream ss(ligne);
       while (getline(ss, s, ',')) {  //strinsplit à partir du caractère ','
       temp = atof(s.c_str());
-      cout<<temp<<" ";
       stock[j].push_back(temp); //on stock chaque information dans une case.
     }
-    cout<<endl;
   }
 
   fichier.close();  // on ferme le fichier
