@@ -25,16 +25,24 @@ void printVec (std::vector<std::vector<double> > vec){
 }
 
 void printVec (std::vector<std::vector<std::vector<double> > > vec){
-  std::cout<<"<<";
+  std::cout<<"<";
   for(unsigned int k =0; k < vec.size();k++){
+    std::cout<<"<";
   for (unsigned int i=0;i<vec[k].size();i++){
+    std::cout<<"<";
     for (unsigned int j=0;j<vec[k][i].size();j++){
-      std::cout<<vec[k][i][j]<<",";
+      std::cout<<vec[k][i][j];
+      if ( j != vec[k][i].size()-1){
+        std::cout<<",";
+      }
     }
-    std::cout<<">,<";
+    std::cout<<">";
+    if ( i != vec[k].size()-1){
+      std::cout<<",";
+    }
     //std::cout<<endl<<"----------"<<std::endl;
   }
-std::cout<<">>"<<endl;}
+std::cout<<">"<<(k!=vec.size() ? " ":">")<<endl;}
 }
 
 vector< vector <double> > getInput(char const * fileName){
@@ -49,7 +57,7 @@ vector< vector <double> > getInput(char const * fileName){
 
   if(fichier){
     vector< vector <double> > stock(nbLignes); //Tableau de chaine de caractère qui va contenir tout le fichier ligne par ligne.
-    cout << "fichier ouvert avec succés , nbLignes= " <<nbLignes<< endl;
+    cout << "\033[1;36m file " << "\033[1;31m" << fileName << "\033[1;36m open with succes , nbLignes= " <<nbLignes<<"\033[0m"<< endl;
     string s;
     double temp = 1;
     string ligne;
@@ -89,12 +97,24 @@ void swapVec (std::vector<std::vector<double> > * input, std::vector <double> * 
   unsigned int r;
   for (unsigned int i=0;i<input->size();i++){
     do{
-      r = rand()%input->size();
+      r = rand()%input->size()-1;
     }while(r == i);
     (*input)[i].swap((*input)[r]);
     iter_swap(result->begin() + i ,result->begin() + r);
   }
 }
+
+void swapVec (std::vector<std::vector<double> > * input){
+  unsigned int r;
+  for (unsigned int i=0;i<input->size();i++){
+    do{
+      r = rand()%input->size();
+    }while(r == i);
+    (*input)[i].swap((*input)[r]);
+
+  }
+}
+
 unsigned int int_to_int(unsigned k) {
   if (k == 0) return 0;
   if (k == 1) return 1;                       /* schlagué */

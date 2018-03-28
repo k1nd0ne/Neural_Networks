@@ -8,7 +8,7 @@ LIBRARY = # <- Arguments supplémentaires de compilation finale
 ###############################################################################
 #                                     MAIN                                    #
 all : main common neurone layer reseau
-	$(COMPIL) $(FLAGS) Neurone.o main.o fonctions.o Layer.o Reseau.o NeuroneB.o -o $(NAME) $(LIBRARY)
+	$(COMPIL) $(FLAGS) Neurone.o main.o fonctions.o Layer.o Reseau.o NeuroneB.o InputLayer.o -o $(NAME) $(LIBRARY)
 main : main.cpp
 	$(COMPIL) $(FLAGS) -c main.cpp
 ###############################################################################
@@ -28,9 +28,11 @@ NeuroneB.o : ./Neurone/NeuroneB.cpp
 ###############################################################################
 ###############################################################################
 #                                    LAYER                                    #
-layer : Layer.o
+layer : Layer.o InputLayer.o
 Layer.o : ./Layer/Layer.cpp
 	$(COMPIL) $(FLAGS) -c ./Layer/Layer.cpp
+InputLayer.o : ./Layer/InputLayer.cpp
+	$(COMPIL) $(FLAGS) -c ./Layer/InputLayer.cpp
 ###############################################################################
 ###############################################################################
 #                                   RESEAU                                    #

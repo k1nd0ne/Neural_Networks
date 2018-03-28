@@ -1,6 +1,7 @@
 #ifndef _LAYER_H_
 #define _LAYER_H_
 #include"../Neurone/Neurone.h"
+#include"../Neurone/NeuroneB.h"
 #include<vector>
 
 class Layer {
@@ -10,7 +11,7 @@ enum TypeLayer {
   OUTPUT,
   HIDDEN
 };
-private:
+protected:
   double k;
   int nbNeurone;
   std::vector<Neurone *> membres;
@@ -19,11 +20,13 @@ private:
   TypeLayer type;
 
 public:
+  Layer();
   Neurone * getNeurone(int index);
-  std::vector<double> fire(std::vector<double>, double);
+  virtual std::vector<double> fire(std::vector<double>, double);//going virtual
   Layer(TypeLayer,int,int);
   int getNbNeurones();
   std::vector<double> getInput();
+  void printWeight();
 
 
 

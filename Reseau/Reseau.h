@@ -2,8 +2,9 @@
 #define _RESEAU_H_
 #include<vector>
 #include"../Neurone/Neurone.h"
-#include"../Layer/Layer.h"
 #include"../Common/fonctions.h"
+#include"../Layer/InputLayer.h"
+
 class Reseau{
 
 
@@ -22,7 +23,7 @@ private:
   std::vector<double> fire_all(std::vector<double> input, double k);
   void learn(std::vector<std::vector<std::vector<double> > > jeuxTest);
   void backPropagation(std::vector<double> output, double k, double eta);
-
+  void printWeight();
 };
 
 #endif

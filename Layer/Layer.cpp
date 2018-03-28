@@ -1,32 +1,29 @@
-#include"Layer.h"
+#include"./Layer.h"
 /*
 prend en parametre un index I, renvoie le neurone numero I du Layer
 
 */
-
+Layer::Layer(){}
 Neurone * Layer::getNeurone (int index){
   return membres[index];
 }
-/*
-prend en parametres le vecteur d'entree, et fait feu dans cette couche
-*/
-// std::vector<double> Layer::fire(std::vector<double> in, double){
-//   input = in;
-//   for ( int i =0; i < nbNeurone; i ++){
-//     output[i] = membres[i]->fire(input,k);// K A MODIFIER
-//   }
-//   return output;
-// }
 /*
 constructeur, prend en parametres le type du layer, et nombre de neurones le composant, et le nombre d'input de chaque neurone
 */
 Layer::Layer(TypeLayer type,int nbneur, int nbinput):nbNeurone(nbneur)
 {
-  std::cout<<"Creation d'un layer"<<std::endl;
+
   membres = std::vector<Neurone*>(nbneur);
-  for (int i =0; i < nbneur; i ++){
-    membres[i]= new Neurone(nbinput);
-    //membres[i].aleaWeights();//ON peut changer ca en faisant un call d'alea weight direct dans le constructeur de neurone
+
+    for (int i =0; i < nbneur; i ++){
+      membres[i]= new NeuroneB(nbinput);
+      //membres[i].aleaWeights();//ON peut changer ca en faisant un call d'alea weight direct dans le constructeur de neurone
+  }
+}
+void Layer::printWeight(){
+  for (int i =0; i < nbNeurone;i++){
+    std::cout<<"Neurone numero : "<<i<<std::endl;
+    membres[i]->printWeight();
   }
 }
 int Layer::getNbNeurones(){

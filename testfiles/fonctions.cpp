@@ -79,3 +79,17 @@ void swapVec (std::vector<std::vector<double> > * input, std::vector <double> * 
     iter_swap(result->begin() + i ,result->begin() + r);
   }
 }
+void printTab(double*** t){
+   int size1 = *(&t + 1) - t;
+   int size2 = *(&t[0] + 1) - t[0];
+   int size3 = *(&t[0][0] + 1) - t[0][0];
+  for(int i=0;i<size1;i++){
+    for(int j=0;i<size2;j++){
+      for(int k=0;i<size3;k++){
+        cout<<t[i][j][k];<<",";
+      }
+      cout<<endl;
+    }
+    cout<<endl<<"-------------------"<<endl;
+  }
+}
