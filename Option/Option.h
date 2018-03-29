@@ -11,13 +11,14 @@ class Option {
 	public :
 	Option();
 	Option(int id, const std::string &intitul, const std::string &m_rac, const std::string &type, const std::string &m_description);
-	int GetOptionId() const;
-	std::string GetOptionType() const;
-	std::string GetOptionInt() const;
-	std::string GetOptionRac() const;
-	void SetOptionType(std::string &t);
-	void SetOptionInt(std::string &intitul);
-	void SetOptionRac(std::string &rac);
-	std::ostream& operator<<(std::ostream& os) const;
+	int getOptionID() const;
+	std::string getOptionType() const;
+	std::string getOptionInt() const;
+	std::string getOptionRac() const;
+	void setOptionType(std::string &t);
+	void setOptionInt(std::string &intitul);
+	void setOptionRac(std::string &rac);
+	void print(std::ostream& os) const;
 };
+std::ostream& operator<<(std::ostream& os, Option o);
 #endif

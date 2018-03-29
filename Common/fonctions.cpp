@@ -70,9 +70,8 @@ vector< vector <double> > getInput(char const * fileName){
       stock[j].push_back(temp); //on stock chaque information dans une case.
     }
   }
-
+  swapVec(&stock);//melange du vecteur extrait du fichier
   fichier.close();  // on ferme le fichier
-  //printVec(stock);
   return stock;
 }
 else {
@@ -97,13 +96,12 @@ void swapVec (std::vector<std::vector<double> > * input, std::vector <double> * 
   unsigned int r;
   for (unsigned int i=0;i<input->size();i++){
     do{
-      r = rand()%input->size()-1;
+      r = rand()%input->size();
     }while(r == i);
     (*input)[i].swap((*input)[r]);
     iter_swap(result->begin() + i ,result->begin() + r);
   }
 }
-
 void swapVec (std::vector<std::vector<double> > * input){
   unsigned int r;
   for (unsigned int i=0;i<input->size();i++){
@@ -111,10 +109,8 @@ void swapVec (std::vector<std::vector<double> > * input){
       r = rand()%input->size();
     }while(r == i);
     (*input)[i].swap((*input)[r]);
-
   }
 }
-
 unsigned int int_to_int(unsigned k) {
   if (k == 0) return 0;
   if (k == 1) return 1;                       /* schlagué */

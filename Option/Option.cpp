@@ -22,45 +22,50 @@ Option::Option(int id, const string &intitul, const string &rac, const std::stri
  * @method Option::GetOptionId
  * @return ID de l'option
  */
-int Option::GetOptionId() const { return m_id; }
+int Option::getOptionId() const { return m_id; }
 /**
  * @method Option::GetOptionType
  * @return Type d'option
  */
-string Option::GetOptionType() const { return m_type.GetType(); }
+string Option::getOptionType() const { return m_type.getType(); }
 /**
  * @method Option::GetOptionInt
  * @return Intitulé de l'option
  */
-string Option::GetOptionInt() const { return m_intitul; }
+string Option::getOptionInt() const { return m_intitul; }
 /**
  * @method Option::GetOptionRac
  * @return Raccourci de l'option
  */
-string Option::GetOptionRac() const { return m_rac; }
+string Option::getOptionRac() const { return m_rac; }
 
 /**
  * @method Option::SetOptionType
  * @param  t                     Nouveau type d'option
  */
-void Option::SetOptionType(std::string &t ) { m_type.SetType(t); }
+void Option::setOptionType(std::string &t ) { m_type.setType(t); }
 /**
  * @method Option::SetOptionInt
  * @param  intitul              Nouveau Intitulé
  */
-void Option::SetOptionInt(std::string &intitul) { m_intitul = intitul; }
+void Option::setOptionInt(std::string &intitul) { m_intitul = intitul; }
 /**
  * @method Option::SetOptionRac
  * @param  rac                  Nouveau Raccourci
  */
-void Option::SetOptionRac(std::string &rac) { m_rac = rac; }
+void Option::setOptionRac(std::string &rac) { m_rac = rac; }
 
 /**
- * @method Option::SetOptionRac
- * @param  os                  Flux
- * @return Flux
- *
+ * Méthode d'affichage en complément de <<
+ * @method print
+ * @param  os    Flux
  */
-std::ostream& operator<<(std::ostream& os) const;
+void print(std::ostream& os) const{
 	os << m_intitul << " (" << m_rac <<")"<<" <";m_type.affiche(); cout <<"> ""\t"<<m_description<<std::endl;
+}
+
+std::ostream& operator<<(std::ostream& os, Option o )
+{
+	print(os)
+  return os;
 }

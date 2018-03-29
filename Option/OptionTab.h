@@ -9,12 +9,12 @@ class OptionTab {
  	size_t m_nb_options;
 	public:
 	OptionTab();
-	void AddOption(const Option &opt);
-	void PrintOptions() const;
-	int GetOptionID(const std::string &opt) const;
-	std::string GetArgument(const std::string &opt) const;
-	std::string GetRaccour(const std::string &opt) const;
-	std::string GetTypeOption(const std::string &opt) const;
-	std::string GetIntitul(const std::string &opt) const;
+	void addOption(const Option &opt);
+	void printOptions() const;
+	int getOptionID(const std::string &opt) const;
+	std::string getArgument(const std::string &opt) const;
+	std::string getRaccour(const std::string &opt) const;
+	std::string getTypeOption(const std::string &opt) const;
+	std::string getIntitul(const std::string &opt) const;
 };
 #endif

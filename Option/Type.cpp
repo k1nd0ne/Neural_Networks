@@ -2,7 +2,7 @@
 #include<iostream>
 #include<string>
 	Type::Type() : m_type() {}
-	
+
 	Type::Type(std::string type) {
 
 	if ( type == "NONE" ) {
@@ -13,22 +13,20 @@
 	m_type = type;
 	}
 
-	else if (type == "REEL") { 
+	else if (type == "REEL") {
 	m_type = type; }
 
-	else if (type == "STRING") { 
+	else if (type == "STRING") {
 	m_type = type; }
 
 	else { 	std::cerr<<"TYPE INCONNUE AU BATAILLONS MON AMI"<<std::endl; }
 	}
-	
+
 	void Type::affiche() const {
 	std::cout<<m_type;
 	}
 	void Type::SetType(std::string type) { m_type = type; }
-	
+
 	std::string Type::GetType() const {
 	return m_type;
 	}
-	
-

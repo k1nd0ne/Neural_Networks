@@ -7,5 +7,4 @@ public:
   InputLayer(int);
   std::vector<double> fire(std::vector<double>, double);
 };
-
 #endif

@@ -36,10 +36,13 @@ void NeuroneB::printWeight(){
  * @method NeuroneB::aleaWeights
  */
 void NeuroneB::aleaWeights(){
-  Neurone::aleaWeights();
+  w = new std::vector<double> (n,0.8);
   std::default_random_engine generator(std::random_device{}());
-  std::normal_distribution<double> distribution(0.5,0.2);
-  (*w).push_back(distribution(generator));
+  std::normal_distribution<double> distribution(0,1);
+  for (int i=0; i<n; i++) {
+    (*w)[i] = distribution(generator);
+  }
+  w->push_back(distribution(generator));
 }
 
 /**

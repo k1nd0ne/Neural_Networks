@@ -3,75 +3,97 @@
 #include<exception>
 #include<string>
 #include<iostream>
-
-
-	OptionTab::OptionTab() : m_Tab(), m_nb_options(0) {}
-
-	void OptionTab::AddOption(const Option &opt) {
+/**
+ * Constructeur par défauts
+ * @method OptionTab::OptionTab
+ */
+OptionTab::OptionTab() : m_Tab(), m_nb_options(0) {}
+/**
+ * Ajoute une option
+ * @method OptionTab::AddOption
+ * @param  opt                  [description]
+ */
+void OptionTab::addOption(const Option &opt) {
 	if (m_nb_options == 10) {
-	std::cerr<<"erreur lors de la création de l'option Nb max d'option atteint"<<std::endl;
-	std::terminate();
+		std::cerr<<"Erreur lors de la création de l'option : nombre maximum d'option atteint"<<__FILE__<<__LINE__<<std::endl;
+		std::terminate();
 	}
 	else {
-
-
-	m_Tab[m_nb_options] = opt;
-	m_nb_options++;
+		m_Tab[m_nb_options] = opt;
+		m_nb_options++;
 	}
 }
-
-	void OptionTab::PrintOptions() const {
+/**
+ * Affiche les options
+ * @method OptionTab::PrintOptions
+ */
+void OptionTab::printOptions() const {
 	std::cout << " Vos Option : "<<std::endl;
 	for (size_t i = 0; i < m_nb_options; i++) {
-	m_Tab[i].printOPT();
-		}
-   	}
-
-
-	int OptionTab::GetOptionID(const std::string &opt) const{
-	  int i = 0;
-	  bool trouve = false;
-		while (i < 10 && trouve == false ) {
-		if (m_Tab[i].GetOptionInt() == opt || m_Tab[i].GetOptionRac() == opt) {
-		trouve = true;
-		}
-		i++;
+		std::cout << m_Tab[i] << '\n';
 	}
-		return m_Tab[i-1].GetOptionId();
-	}
-
-	std::string OptionTab::GetArgument(const std::string &opt) const {
-	  int i = 0;
-	  bool trouve = false;
-		while (i < 10 && trouve == false ) {
-		if (m_Tab[i].GetOptionInt() == opt || m_Tab[i].GetOptionRac() == opt ) {
-		trouve = true;
+}
+/**
+ * @method OptionTab::GetOptionID
+ * @param  opt                    Nom de l'option
+ * @return                        ID de cette option
+ */
+int OptionTab::getOptionID(const std::string &opt) const{
+	int i = 0;
+	bool trouve = false;
+	while (i < 10 && trouve == false ) {
+		if (m_Tab[i].getOptionInt() == opt || m_Tab[i].getOptionRac() == opt) {
+			trouve = true;
 		}
 		i++;
 	}
-		return m_Tab[i-1].GetOptionType();
-	}
-
-	std::string OptionTab::GetRaccour(const std::string &opt) const {
-	  int i = 0;
-	  bool trouve = false;
-		while (i < 10 && trouve == false ) {
-		if (m_Tab[i].GetOptionRac() == opt || m_Tab[i].GetOptionInt() == opt ) {
-		trouve = true;
+	return m_Tab[i-1].getOptionID();
+}
+/**
+ * @method OptionTab::GetArgument
+ * @param  opt                    Nom de l'option
+ * @return                        Argument de cette option
+ */
+std::string OptionTab::getArgument(const std::string &opt) const {
+	int i = 0;
+	bool trouve = false;
+	while (i < 10 && trouve == false ) {
+		if (m_Tab[i].getOptionInt() == opt || m_Tab[i].getOptionRac() == opt ) {
+			trouve = true;
 		}
 		i++;
 	}
-	return m_Tab[i-1].GetOptionRac();
-	 }
-
-	std::string OptionTab::GetIntitul(const std::string &opt) const {
-	  int i = 0;
-	  bool trouve = false;
-		while (i < 10 && trouve == false ) {
-		if (m_Tab[i].GetOptionInt() == opt || m_Tab[i].GetOptionRac() == opt) {
-		trouve = true;
+	return m_Tab[i-1].getOptionType();
+}
+/**
+ * @method OptionTab::getRaccour
+ * @param  opt                   Nom de l'option
+ * @return                       Raccourci de cette option
+ */
+std::string OptionTab::getRaccour(const std::string &opt) const {
+	int i = 0;
+	bool trouve = false;
+	while (i < 10 && trouve == false ) {
+		if (m_Tab[i].getOptionRac() == opt || m_Tab[i].getOptionInt() == opt ) {
+			trouve = true;
 		}
 		i++;
 	}
-	return m_Tab[i-1].GetOptionInt();
-	 }
+	return m_Tab[i-1].getOptionRac();
+}
+/**
+ * @method OptionTab::getIntitul
+ * @param  opt                   Nom de l'option
+ * @return                       Intitulé de cette option
+ */
+std::string OptionTab::getIntitul(const std::string &opt) const {
+	int i = 0;
+	bool trouve = false;
+	while (i < 10 && trouve == false ) {
+		if (m_Tab[i].getOptionInt() == opt || m_Tab[i].getOptionRac() == opt) {
+			trouve = true;
+		}
+		i++;
+	}
+	return m_Tab[i-1].getOptionInt();
+}

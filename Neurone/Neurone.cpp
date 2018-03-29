@@ -78,7 +78,7 @@ double Neurone::derive_activate(double sum, double k)const{
  * @method Neurone::learn
  * @param  x              Vecteur de poids
  * @param  o              Valeur attendue
- * @param  k              Valeur du biais
+ * @param  k              Valeur du coefficient de sigmoid k
  * @param  mu             Taux d'apprentissage | Learning rate
  */
 void Neurone::learn(std::vector<double> x,double o,double k, double mu){
@@ -110,7 +110,6 @@ void Neurone::aleaWeights(){
   std::normal_distribution<double> distribution(0,1);
   for (int i=0; i<n; i++) {
     (*w)[i] = distribution(generator);
-    //std::cout<<(*w)[i]<<std::endl;
   }
 }
 /**

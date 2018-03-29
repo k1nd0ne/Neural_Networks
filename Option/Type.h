@@ -2,14 +2,13 @@
 #define _TYPE_H
 #include<string>
 #include<iostream>
+
 class Type {
-
-
-private :
+	private :
 	std::string m_type;
-public :
+	public :
 	Type();
-	Type(std::string type); 	
+	Type(std::string type);
 	void affiche() const;
 	void SetType(std::string type);
 	std::string GetType() const;
