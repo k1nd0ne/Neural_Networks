@@ -2,7 +2,7 @@
 This project is about creating a Neural Network and make it learn a lot of thinks
 
 ## Synopsis
-This project is meant to learn programming and machine leanning. It is also a project that me and my collegues needs to present to a jury for our lisence 2 (2017/2018).
+This project is meant to learn programming and machine learning. It is also a project that me and my collegues will present to a jury for our lisence 2 (2017/2018).
 
 ## Code Example
 
