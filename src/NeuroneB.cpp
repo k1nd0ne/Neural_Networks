@@ -1,4 +1,4 @@
-#include"./NeuroneB.h"
+#include"../obj/NeuroneB.h"
 /**
  * Constructeur du Neurone avec biais
  * @method NeuroneB::NeuroneB

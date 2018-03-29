@@ -1,9 +1,9 @@
 #ifndef _RESEAU_H_
 #define _RESEAU_H_
 #include<vector>
-#include"../Neurone/Neurone.h"
-#include"../Common/fonctions.h"
-#include"../Layer/InputLayer.h"
+#include"./Neurone.h"
+#include"./fonctions.h"
+#include"./InputLayer.h"
 
 class Reseau{
 private:

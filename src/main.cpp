@@ -1,8 +1,8 @@
-#include"./Neurone/Neurone.h"
-#include"./Neurone/NeuroneB.h"
-#include"./Layer/Layer.h"
-#include"./Reseau/Reseau.h"
-#include"./Common/fonctions.h"
+#include"../obj/Neurone.h"
+#include"../obj/NeuroneB.h"
+#include"../obj/Layer.h"
+#include"../obj/Reseau.h"
+#include"../obj/fonctions.h"
 #include<iostream>
 #include <stdlib.h>
 #include <time.h>
@@ -35,7 +35,7 @@ int main (int agrc, char * argv[]){
     else res={1,0,0};
     testData[i] = {training[i],res};
   }
-  
+
   cout << "Learning Starting..."<<endl;
   double pourcentage;
   for(int i=0;i<epoch;i++){

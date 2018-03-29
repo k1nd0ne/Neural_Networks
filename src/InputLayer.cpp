@@ -1,4 +1,4 @@
-#include "./InputLayer.h"
+#include "../obj/InputLayer.h"
 /**
  * Constructeur par taille
  * @method InputLayer::InputLayer

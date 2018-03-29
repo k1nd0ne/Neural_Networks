@@ -1,4 +1,4 @@
-#include "fonctions.h"
+#include "../obj/fonctions.h"
 #include<iostream>
 #include <fstream>
 #include <sstream>

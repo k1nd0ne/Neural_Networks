@@ -1,4 +1,4 @@
-#include"Type.h"
+#include"../obj/Type.h"
 #include<iostream>
 #include<string>
 	Type::Type() : m_type() {}

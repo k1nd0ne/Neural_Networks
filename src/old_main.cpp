@@ -9,8 +9,8 @@
 #include<vector>
 #include<cmath>
 #include<stdlib.h>
-#include"Neurone.h"
-#include"fonctions.h"
+#include"../obj/Neurone.h"
+#include"../obj/fonctions.h"
 
 using namespace std;
 

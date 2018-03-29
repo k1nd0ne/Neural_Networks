@@ -1,9 +1,9 @@
 #include<iostream>
-#include"OptionTab.h"
-#include"Option.h"
+#include"../obj/OptionTab.h"
+#include"../obj/Option.h"
 #include<string>
-#include"../Neurone/Neurone.h"
-#include"../Neurone/fonctions.h"
+#include"../obj/Neurone.h"
+#include"../obj/fonctions.h"
 #include<time.h>  areski is gaiiiiii
 using namespace std;
 

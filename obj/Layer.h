@@ -1,7 +1,7 @@
 #ifndef _LAYER_H_
 #define _LAYER_H_
-#include"../Neurone/Neurone.h"
-#include"../Neurone/NeuroneB.h"
+#include"./Neurone.h"
+#include"./NeuroneB.h"
 #include<vector>
 
 class Layer {

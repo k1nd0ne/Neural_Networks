@@ -1,4 +1,4 @@
-#include"./Neurone.h"
+#include"../obj/Neurone.h"
 
 /**
 * Constructeur par defauts
