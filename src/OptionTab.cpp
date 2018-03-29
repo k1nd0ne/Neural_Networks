@@ -1,5 +1,5 @@
-#include"../obj/OptionTab.h"
-#include"../obj/Option.h"
+#include"OptionTab.h"
+#include"Option.h"
 #include<exception>
 #include<string>
 #include<iostream>

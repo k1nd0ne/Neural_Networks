@@ -1,4 +1,4 @@
-#include"../obj/Type.h"
+#include"Type.h"
 #include<iostream>
 #include<string>
 	Type::Type() : m_type() {}
@@ -25,8 +25,10 @@
 	void Type::affiche() const {
 	std::cout<<m_type;
 	}
-	void Type::SetType(std::string type) { m_type = type; }
+	void Type::setType(std::string type) { 
+	m_type = type; 
+	}
 
-	std::string Type::GetType() const {
-	return m_type;
+	std::string Type::getType() const {
+		return m_type;
 	}

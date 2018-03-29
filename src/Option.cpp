@@ -1,8 +1,8 @@
 #include<string>
-#include"../obj/Option.h"
+#include"Option.h"
 #include"Type.h"
 #include<iostream>
-
+using namespace std;
 /**
 * Constructeur d'option vide
 * @method Option::Option
@@ -22,7 +22,7 @@ Option::Option(int id, const string &intitul, const string &rac, const std::stri
  * @method Option::GetOptionId
  * @return ID de l'option
  */
-int Option::getOptionId() const { return m_id; }
+int Option::getOptionID() const { return m_id; }
 /**
  * @method Option::GetOptionType
  * @return Type d'option
@@ -60,12 +60,12 @@ void Option::setOptionRac(std::string &rac) { m_rac = rac; }
  * @method print
  * @param  os    Flux
  */
-void print(std::ostream& os) const{
+void Option::print(std::ostream& os) const{
 	os << m_intitul << " (" << m_rac <<")"<<" <";m_type.affiche(); cout <<"> ""\t"<<m_description<<std::endl;
 }
 
 std::ostream& operator<<(std::ostream& os, Option o )
 {
-	print(os)
+	o.print(os);
   return os;
 }

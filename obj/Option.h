@@ -5,7 +5,8 @@
 class Option {
 	private :
 	int m_id;
-	std::string m_intitul,m_rac;
+	std::string m_intitul;
+	std::string m_rac;
 	Type m_type;
 	std::string m_description;
 	public :

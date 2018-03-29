@@ -10,7 +10,7 @@ class Type {
 	Type();
 	Type(std::string type);
 	void affiche() const;
-	void SetType(std::string type);
-	std::string GetType() const;
+	void setType(std::string type);
+	std::string getType() const;
 };
 #endif
