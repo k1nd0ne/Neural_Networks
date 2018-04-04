@@ -1,0 +1,8 @@
+var files =
+[
+    [ "Common", "dir_4ab6b4cc6a7edbff49100e9123df213f.html", "dir_4ab6b4cc6a7edbff49100e9123df213f" ],
+    [ "Layer", "dir_a924a7c36f568fb55f0189eb05b4fa5a.html", "dir_a924a7c36f568fb55f0189eb05b4fa5a" ],
+    [ "Neurone", "dir_46a3cf39f47ee0e00fbc52542f8a646a.html", "dir_46a3cf39f47ee0e00fbc52542f8a646a" ],
+    [ "Option", "dir_1ba9223d2ece18a41e71e38035d89bac.html", "dir_1ba9223d2ece18a41e71e38035d89bac" ],
+    [ "Reseau", "dir_1047144a739eb486842d9616b4b86f5e.html", "dir_1047144a739eb486842d9616b4b86f5e" ]
+];
