@@ -2,6 +2,7 @@
 #define _LAYER_H_
 #include"../Neurone/Neurone.h"
 #include"../Neurone/NeuroneB.h"
+#include "../Neurone/FonctionActivation.h"
 #include<vector>
 
 class Layer {
@@ -20,9 +21,9 @@ protected:
   TypeLayer type;
 public:
   Layer();
+  Layer(TypeLayer,int,int,FonctionActivation::EnumFonctionActivation);
   Neurone * getNeurone(int index);
   virtual std::vector<double> fire(std::vector<double>, double);
-  Layer(TypeLayer,int,int);
   int getNbNeurones();
   std::vector<double> getInput();
   std::vector<double> getOutput();

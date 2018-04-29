@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.11"/>
-<title>Reseaux Neuronal: Reseau Class Reference</title>
+<title>Neural Network &amp; Backpropagation: Reseau Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -30,10 +30,11 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="logo_um.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="univmontpellierlogo-1449840251.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Reseaux Neuronal
+   <div id="projectname">Neural Network &amp; Backpropagation
    </div>
+   <div id="projectbrief">Reseau Neuronal &amp; Retropropagation</div>
   </td>
  </tr>
  </tbody>
@@ -115,19 +116,151 @@ $(document).ready(function(){initNavTree('class_reseau.html','');});
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad52772260a23b70cea81749c236f82a9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad52772260a23b70cea81749c236f82a9"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Reseau</b> (int, std::vector&lt; int &gt;)</td></tr>
-<tr class="separator:ad52772260a23b70cea81749c236f82a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41a8aca857c3350f47a4f97d7f7819d0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a41a8aca857c3350f47a4f97d7f7819d0"></a>
-std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>fire_all</b> (std::vector&lt; double &gt; input, double k)</td></tr>
-<tr class="separator:a41a8aca857c3350f47a4f97d7f7819d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1577ccd512174bc1fe48ef320f765c1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae1577ccd512174bc1fe48ef320f765c1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>learn</b> (std::vector&lt; std::vector&lt; std::vector&lt; double &gt; &gt; &gt; jeuxTest)</td></tr>
+<tr class="memitem:a031305bfc2c71d9458630b8ce4db0a1f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_reseau.html#a031305bfc2c71d9458630b8ce4db0a1f">Reseau</a> (int, std::vector&lt; int &gt;, double, double)</td></tr>
+<tr class="separator:a031305bfc2c71d9458630b8ce4db0a1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af594c3933e77f1e5a08596cc268e8412"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_reseau.html#af594c3933e77f1e5a08596cc268e8412">fire_all</a> (std::vector&lt; double &gt; input)</td></tr>
+<tr class="separator:af594c3933e77f1e5a08596cc268e8412"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1577ccd512174bc1fe48ef320f765c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_reseau.html#ae1577ccd512174bc1fe48ef320f765c1">learn</a> (std::vector&lt; std::vector&lt; std::vector&lt; double &gt; &gt; &gt; jeuxTest)</td></tr>
 <tr class="separator:ae1577ccd512174bc1fe48ef320f765c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8ff4bafa22d93e5c702b88e71d96c1c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af8ff4bafa22d93e5c702b88e71d96c1c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>backPropagation</b> (std::vector&lt; double &gt; output, double k, double eta)</td></tr>
-<tr class="separator:af8ff4bafa22d93e5c702b88e71d96c1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2148c67a608b36a4a005b5cc79fd67d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_reseau.html#a2148c67a608b36a4a005b5cc79fd67d4">backPropagation</a> (std::vector&lt; double &gt; output)</td></tr>
+<tr class="separator:a2148c67a608b36a4a005b5cc79fd67d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a363cec507253f0b196cbfd0c2e6687e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_reseau.html#a363cec507253f0b196cbfd0c2e6687e7">printWeight</a> ()</td></tr>
+<tr class="separator:a363cec507253f0b196cbfd0c2e6687e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a031305bfc2c71d9458630b8ce4db0a1f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Reseau::Reseau </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nbLayers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>layerInformation</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>eta</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Constructeur  <a class="el" href="class_reseau.html#a031305bfc2c71d9458630b8ce4db0a1f">Reseau::Reseau</a> </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nbLayers</td><td>Nombre de couche </td></tr>
+    <tr><td class="paramname">layerInformation</td><td>Vecteur descriptif de chaque layer </td></tr>
+    <tr><td class="paramname">k</td><td>constante k dont depends la sigmoide </td></tr>
+    <tr><td class="paramname">eta</td><td>coefficient d'evolution </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a2148c67a608b36a4a005b5cc79fd67d4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Reseau::backPropagation </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; double &gt;&#160;</td>
+          <td class="paramname"><em>output</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Méthode de propagation en arriére  <a class="el" href="class_reseau.html#a2148c67a608b36a4a005b5cc79fd67d4">Reseau::backPropagation</a> </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">output</td><td>Sortie </td></tr>
+    <tr><td class="paramname">k</td><td>Valeur du coefficient </td></tr>
+    <tr><td class="paramname">eta</td><td>Valeur d'eta </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="af594c3933e77f1e5a08596cc268e8412"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; double &gt; Reseau::fire_all </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; double &gt;&#160;</td>
+          <td class="paramname"><em>input</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Fire général  <a class="el" href="class_reseau.html#af594c3933e77f1e5a08596cc268e8412">Reseau::fire_all</a> </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>Vecteur d'entrée </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Valeur d'activation </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ae1577ccd512174bc1fe48ef320f765c1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Reseau::learn </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::vector&lt; std::vector&lt; double &gt; &gt; &gt;&#160;</td>
+          <td class="paramname"><em>jeuxTest</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Méthode d'apprentissage  <a class="el" href="class_reseau.html#ae1577ccd512174bc1fe48ef320f765c1">Reseau::learn</a> </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">jeuxTest</td><td>Vecteur de vecteur de vecteur : décrivant en jeuxTest[i][0] le vecteur d'entrée et en jeuxTest[i][1] la sortie attendue </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a363cec507253f0b196cbfd0c2e6687e7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Reseau::printWeight </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Affichage des poids  <a class="el" href="class_reseau.html#a363cec507253f0b196cbfd0c2e6687e7">Reseau::printWeight</a> </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>Reseau/<a class="el" href="_reseau_8h_source.html">Reseau.h</a></li>
 <li>Reseau/Reseau.cpp</li>

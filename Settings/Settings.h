@@ -2,16 +2,16 @@
 #define SETTINGS_H
 #include<vector>
 
-class settings{
+class Settings{
 private:
   int nbrHiddenLayers;
   std::vector<int>* archi;
   std::vector<double>* differentOutputs = new std::vector<double>;
 public:
+  Settings(char const * fileName);
   int getNbrHiddenLayers();
   std::vector<int>* getArchi();
   std::vector<double>* getDifferentOutputs();
-  settings(char const * fileName);
 
 };
 

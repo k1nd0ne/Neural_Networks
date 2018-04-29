@@ -1,4 +1,5 @@
 #include"./FonctionActivation.h"
+#include <stdlib.h>
 /**
  * Constructeur par défauts
  * @method FonctionActivation
@@ -47,6 +48,15 @@ double FonctionActivation::getValeurActivation(double x, double k) const{
     case SIN:
       return sin(x);
       break;
+    case RELU:
+      return x<0? 0 : x;
+      break;
+    case LRELU:
+      return x<0? 0.01*x : x;
+      break;
+    case PRELU:
+      return x<0? k*x : x;
+      break;
     case ELU:
       return x<0? (k*(exp(x)-1)) : x;;
       break;
@@ -77,6 +87,15 @@ double FonctionActivation::getValeurDerivee(double x, double k) const{
       break;
     case SIN:
       return cos(x);
+      break;
+    case RELU:
+      return x<0? 0 : 1;
+      break;
+    case LRELU:
+      return x<0? 0.01 : 1;
+      break;
+    case PRELU:
+      return x<0? k : 1;
       break;
     case ELU:
       return x<0? (k*(exp(x)-1)) + k : 1;

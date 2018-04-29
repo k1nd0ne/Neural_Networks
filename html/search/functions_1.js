@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['derive_5factivate',['derive_activate',['../class_neurone.html#a86ae71dc89e5ee954e28f97dc3832d1a',1,'Neurone']]]
+  ['backpropagation',['backPropagation',['../class_reseau.html#a2148c67a608b36a4a005b5cc79fd67d4',1,'Reseau']]]
 ];

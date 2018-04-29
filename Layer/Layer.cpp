@@ -12,13 +12,13 @@ Layer::Layer(){}
  * @param  nbneur       Nombre de neurone
  * @param  nbinput      Nombre d'entrée par neurone
  */
-Layer::Layer(TypeLayer type,int nbneur, int nbinput):nbNeurone(nbneur)
+Layer::Layer(TypeLayer type,int nbneur, int nbinput, FonctionActivation::EnumFonctionActivation fct):nbNeurone(nbneur)
 {
   membres = std::vector<Neurone*>(nbneur);
   input=std::vector<double>(nbinput);
   output= std::vector<double>(nbneur);
     for (int i =0; i < nbneur; i ++){
-      membres[i]= new NeuroneB(nbinput);
+      membres[i]= new NeuroneB(nbinput,fct);
   }
 }
 /**

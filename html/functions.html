@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.11"/>
-<title>Reseaux Neuronal: Class Members</title>
+<title>Neural Network &amp; Backpropagation: Class Members</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -30,10 +30,11 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="logo_um.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="univmontpellierlogo-1449840251.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Reseaux Neuronal
+   <div id="projectname">Neural Network &amp; Backpropagation
    </div>
+   <div id="projectbrief">Reseau Neuronal &amp; Retropropagation</div>
   </td>
  </tr>
  </tbody>
@@ -81,6 +82,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions_func.html"><span>Functions</span></a></li>
     </ul>
   </div>
+  <div id="navrow4" class="tabs3">
+    <ul class="tablist">
+      <li><a href="#index_a"><span>a</span></a></li>
+      <li><a href="#index_b"><span>b</span></a></li>
+      <li><a href="#index_d"><span>d</span></a></li>
+      <li><a href="#index_f"><span>f</span></a></li>
+      <li><a href="#index_g"><span>g</span></a></li>
+      <li><a href="#index_i"><span>i</span></a></li>
+      <li><a href="#index_l"><span>l</span></a></li>
+      <li><a href="#index_n"><span>n</span></a></li>
+      <li><a href="#index_o"><span>o</span></a></li>
+      <li><a href="#index_p"><span>p</span></a></li>
+      <li><a href="#index_r"><span>r</span></a></li>
+      <li><a href="#index_s"><span>s</span></a></li>
+      <li class="current"><a href="#index_t"><span>t</span></a></li>
+    </ul>
+  </div>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -111,16 +129,47 @@ $(document).ready(function(){initNavTree('functions.html','');});
 </div>
 
 <div class="contents">
-<div class="textblock">Here is a list of all documented class members with links to the class documentation for each member:</div><ul>
+<div class="textblock">Here is a list of all documented class members with links to the class documentation for each member:</div>
+
+<h3><a class="anchor" id="index_a"></a>- a -</h3><ul>
+<li>addOption()
+: <a class="el" href="class_option_tab.html#a31b672027b075713cd89bdcdc05b3d34">OptionTab</a>
+</li>
+<li>affiche()
+: <a class="el" href="class_type.html#a244dbd25a3e0360d31695aa90f5bca6e">Type</a>
+</li>
 <li>aleaWeights()
 : <a class="el" href="class_neurone.html#a2afac406368d1b2dbeb407c2da5ec3e4">Neurone</a>
 , <a class="el" href="class_neurone_b.html#af00d23b3078f5118329dc4d53c1a77a6">NeuroneB</a>
 </li>
+</ul>
+
+
+<h3><a class="anchor" id="index_b"></a>- b -</h3><ul>
+<li>backPropagation()
+: <a class="el" href="class_reseau.html#a2148c67a608b36a4a005b5cc79fd67d4">Reseau</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_d"></a>- d -</h3><ul>
 <li>derive_activate()
 : <a class="el" href="class_neurone.html#a86ae71dc89e5ee954e28f97dc3832d1a">Neurone</a>
 </li>
+</ul>
+
+
+<h3><a class="anchor" id="index_f"></a>- f -</h3><ul>
 <li>fire()
-: <a class="el" href="class_neurone.html#a9ec6e62bf458c8fcf201e135d6ecdfab">Neurone</a>
+: <a class="el" href="class_input_layer.html#a571695e3a371e4093f26f3e6acd9833a">InputLayer</a>
+, <a class="el" href="class_layer.html#a47f7a0defe3485a1355249a4db62c8a1">Layer</a>
+, <a class="el" href="class_neurone.html#a9ec6e62bf458c8fcf201e135d6ecdfab">Neurone</a>
+</li>
+<li>fire_all()
+: <a class="el" href="class_reseau.html#af594c3933e77f1e5a08596cc268e8412">Reseau</a>
+</li>
+<li>FonctionActivation()
+: <a class="el" href="class_fonction_activation.html#a177013d24531dd8438b1ac95809325e9">FonctionActivation</a>
 </li>
 <li>fw_activate()
 : <a class="el" href="class_neurone.html#aec9263293bad3fce3702e66462fde1fb">Neurone</a>
@@ -129,50 +178,156 @@ $(document).ready(function(){initNavTree('functions.html','');});
 : <a class="el" href="class_neurone.html#aabf9f1260f6ee90497b1edd96d698152">Neurone</a>
 , <a class="el" href="class_neurone_b.html#ae4f210b6b5881a739c3d6aafdc498fe2">NeuroneB</a>
 </li>
+</ul>
+
+
+<h3><a class="anchor" id="index_g"></a>- g -</h3><ul>
+<li>getArchi()
+: <a class="el" href="class_settings.html#ad5ecbf5f2672f3ddc9c5809402cf24bf">Settings</a>
+</li>
+<li>getArgument()
+: <a class="el" href="class_option_tab.html#a433b4d07f7c7f2d389f03e2b165f4f2c">OptionTab</a>
+</li>
+<li>getDifferentOutputs()
+: <a class="el" href="class_settings.html#a79aff561ecb30eea8900a322223b20d0">Settings</a>
+</li>
+<li>getInput()
+: <a class="el" href="class_layer.html#aacf5f78bee474a8b95f22b71957ae8f4">Layer</a>
+</li>
+<li>getIntitul()
+: <a class="el" href="class_option_tab.html#acfc151c8ba1d8bddb7744ce8ae59cd8f">OptionTab</a>
+</li>
+<li>getNbNeurones()
+: <a class="el" href="class_layer.html#afa5e2d965f52577f5ac9332f91135abd">Layer</a>
+</li>
 <li>getNbPoids()
 : <a class="el" href="class_neurone.html#a276f60498de090878d0b2e8e05f4acc0">Neurone</a>
 , <a class="el" href="class_neurone_b.html#ad406a05993ed1a7eba6dfbc0f8908716">NeuroneB</a>
 </li>
-<li>GetOptionId()
-: <a class="el" href="class_option.html#a94825fa4ac38b955adfb313c6faffc60">Option</a>
+<li>getNbrHiddenLayers()
+: <a class="el" href="class_settings.html#a8ab695b0b4c99e48c30a89f49d3f3a27">Settings</a>
 </li>
-<li>GetOptionInt()
-: <a class="el" href="class_option.html#a8cf0158ec5ee75bfb6ab9ac2c2d00665">Option</a>
+<li>getNeurone()
+: <a class="el" href="class_layer.html#a1952f73028e06428dba8ce544c8bbaff">Layer</a>
 </li>
-<li>GetOptionRac()
-: <a class="el" href="class_option.html#ad934c57654dce150fbad981f6f7d345f">Option</a>
+<li>getOptionID()
+: <a class="el" href="class_option.html#a27a99cccc32cd28cf87decadd3821013">Option</a>
+, <a class="el" href="class_option_tab.html#a8ce61fa7f0c8aaab08dcc0d70abeb9b3">OptionTab</a>
 </li>
-<li>GetOptionType()
-: <a class="el" href="class_option.html#acc0194b8f07c862c206a7a673fd4da02">Option</a>
+<li>getOptionInt()
+: <a class="el" href="class_option.html#a071b24098adb995112018aa96f665826">Option</a>
+</li>
+<li>getOptionRac()
+: <a class="el" href="class_option.html#a7101b594be73889c7b2b8f4c59056def">Option</a>
+</li>
+<li>getOptionType()
+: <a class="el" href="class_option.html#af247c5fbae431fb48acd06c384cc90be">Option</a>
+</li>
+<li>getRaccour()
+: <a class="el" href="class_option_tab.html#a6b22f45d47a04ba2287516bc061f2a14">OptionTab</a>
+</li>
+<li>getType()
+: <a class="el" href="class_type.html#ac6f332df275d9c23c2711afc67b0ae15">Type</a>
+</li>
+<li>getValeurActivation()
+: <a class="el" href="class_fonction_activation.html#a3dde7b01c5b182596d71b859c702cfe5">FonctionActivation</a>
+</li>
+<li>getValeurDerivee()
+: <a class="el" href="class_fonction_activation.html#a1505e15bf464c536d34c9934b71af8e6">FonctionActivation</a>
 </li>
 <li>getWeight()
 : <a class="el" href="class_neurone.html#ad35958a875fba519d8ccc4984302c376">Neurone</a>
 </li>
+</ul>
+
+
+<h3><a class="anchor" id="index_i"></a>- i -</h3><ul>
+<li>InputLayer()
+: <a class="el" href="class_input_layer.html#a105e2224f479aa321aaabb7e66d66cdd">InputLayer</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_l"></a>- l -</h3><ul>
+<li>Layer()
+: <a class="el" href="class_layer.html#a8f623c7c4737dc29ecc86978d243ac6f">Layer</a>
+</li>
 <li>learn()
 : <a class="el" href="class_neurone.html#ad649e6c655e70db090cfdc5ad4670e34">Neurone</a>
 , <a class="el" href="class_neurone_b.html#a863968dd758150552330f8cdd33fe717">NeuroneB</a>
+, <a class="el" href="class_reseau.html#ae1577ccd512174bc1fe48ef320f765c1">Reseau</a>
 </li>
+</ul>
+
+
+<h3><a class="anchor" id="index_n"></a>- n -</h3><ul>
 <li>Neurone()
 : <a class="el" href="class_neurone.html#aaf4eaa15b62d4767ae4f523eb8b13b4a">Neurone</a>
 </li>
 <li>NeuroneB()
 : <a class="el" href="class_neurone_b.html#a041fbba077918027c5f8566133467bbf">NeuroneB</a>
 </li>
+</ul>
+
+
+<h3><a class="anchor" id="index_o"></a>- o -</h3><ul>
 <li>Option()
 : <a class="el" href="class_option.html#af517613005312013c576eb9099a50464">Option</a>
 </li>
+<li>OptionTab()
+: <a class="el" href="class_option_tab.html#a841c3c1199bfb54f8d824eba78c51be8">OptionTab</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_p"></a>- p -</h3><ul>
+<li>print()
+: <a class="el" href="class_option.html#acc61a81e1a5f3e37d610c1d24b7e741e">Option</a>
+</li>
+<li>printOptions()
+: <a class="el" href="class_option_tab.html#a0f55a3dc1c41e04f50fc827c18e86531">OptionTab</a>
+</li>
 <li>printWeight()
-: <a class="el" href="class_neurone.html#a21cca59967aa7a5cde3580d131d02526">Neurone</a>
+: <a class="el" href="class_layer.html#a0d62c7c52893dc81f32e28416f987de1">Layer</a>
+, <a class="el" href="class_neurone.html#a21cca59967aa7a5cde3580d131d02526">Neurone</a>
 , <a class="el" href="class_neurone_b.html#addc614b9370d832cbb67ef080f277528">NeuroneB</a>
+, <a class="el" href="class_reseau.html#a363cec507253f0b196cbfd0c2e6687e7">Reseau</a>
 </li>
-<li>SetOptionInt()
-: <a class="el" href="class_option.html#a83535feae66aa1f320e5a8c9f0070bca">Option</a>
+</ul>
+
+
+<h3><a class="anchor" id="index_r"></a>- r -</h3><ul>
+<li>Reseau()
+: <a class="el" href="class_reseau.html#a031305bfc2c71d9458630b8ce4db0a1f">Reseau</a>
 </li>
-<li>SetOptionRac()
-: <a class="el" href="class_option.html#adbc170d2638cbb6534ae59ff9d70a051">Option</a>
+</ul>
+
+
+<h3><a class="anchor" id="index_s"></a>- s -</h3><ul>
+<li>setFonctionActivation()
+: <a class="el" href="class_fonction_activation.html#a49d599d75471b884fa3ecf2c4a1259c6">FonctionActivation</a>
 </li>
-<li>SetOptionType()
-: <a class="el" href="class_option.html#aa58eb24c24e155ec67ec5c81ceb0382a">Option</a>
+<li>setOptionInt()
+: <a class="el" href="class_option.html#a53a6e4e96cb0e3ca490f677f395fa7b0">Option</a>
+</li>
+<li>setOptionRac()
+: <a class="el" href="class_option.html#a85290e384c7163852c0cf17953a345c1">Option</a>
+</li>
+<li>setOptionType()
+: <a class="el" href="class_option.html#a276a7e83068f06674838a14d3ccd90b5">Option</a>
+</li>
+<li>Settings()
+: <a class="el" href="class_settings.html#a88880062bc619ad3395aff8fb78e9f53">Settings</a>
+</li>
+<li>setType()
+: <a class="el" href="class_type.html#a0faca557ce4831a1c1bbb31b643a327a">Type</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_t"></a>- t -</h3><ul>
+<li>Type()
+: <a class="el" href="class_type.html#a78339313d36891f18427c431ea84e306">Type</a>
 </li>
 </ul>
 </div><!-- contents -->

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.11"/>
-<title>Reseaux Neuronal: Member List</title>
+<title>Neural Network &amp; Backpropagation: Member List</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -30,10 +30,11 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="logo_um.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="univmontpellierlogo-1449840251.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Reseaux Neuronal
+   <div id="projectname">Neural Network &amp; Backpropagation
    </div>
+   <div id="projectbrief">Reseau Neuronal &amp; Retropropagation</div>
   </td>
  </tr>
  </tbody>
@@ -115,17 +116,18 @@ $(document).ready(function(){initNavTree('class_neurone.html','');});
   <tr class="even"><td class="entry"><a class="el" href="class_neurone.html#a2afac406368d1b2dbeb407c2da5ec3e4">aleaWeights</a>()</td><td class="entry"><a class="el" href="class_neurone.html">Neurone</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
   <tr><td class="entry"><a class="el" href="class_neurone.html#a86ae71dc89e5ee954e28f97dc3832d1a">derive_activate</a>(double sum, double k) const </td><td class="entry"><a class="el" href="class_neurone.html">Neurone</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_neurone.html#a9ec6e62bf458c8fcf201e135d6ecdfab">fire</a>(std::vector&lt; double &gt; x, double k) const </td><td class="entry"><a class="el" href="class_neurone.html">Neurone</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_neurone.html#aec9263293bad3fce3702e66462fde1fb">fw_activate</a>(double sum, double k) const </td><td class="entry"><a class="el" href="class_neurone.html">Neurone</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_neurone.html#aabf9f1260f6ee90497b1edd96d698152">fw_sum</a>(std::vector&lt; double &gt; x) const </td><td class="entry"><a class="el" href="class_neurone.html">Neurone</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_neurone.html#a276f60498de090878d0b2e8e05f4acc0">getNbPoids</a>()</td><td class="entry"><a class="el" href="class_neurone.html">Neurone</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_neurone.html#ad35958a875fba519d8ccc4984302c376">getWeight</a>()</td><td class="entry"><a class="el" href="class_neurone.html">Neurone</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="class_neurone.html#ad649e6c655e70db090cfdc5ad4670e34">learn</a>(std::vector&lt; double &gt; x, double o, double k, double mu)</td><td class="entry"><a class="el" href="class_neurone.html">Neurone</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>n</b> (defined in <a class="el" href="class_neurone.html">Neurone</a>)</td><td class="entry"><a class="el" href="class_neurone.html">Neurone</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_neurone.html#aaf4eaa15b62d4767ae4f523eb8b13b4a">Neurone</a>()</td><td class="entry"><a class="el" href="class_neurone.html">Neurone</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_neurone.html#a3a3b7ae3b6182b8a6636f6ca6082c1e5">Neurone</a>(int taille)</td><td class="entry"><a class="el" href="class_neurone.html">Neurone</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="class_neurone.html#af16f2f95b99e8d94c2ebabb8af0fc4ae">Neurone</a>(int taille, std::vector&lt; double &gt; *x)</td><td class="entry"><a class="el" href="class_neurone.html">Neurone</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_neurone.html#a21cca59967aa7a5cde3580d131d02526">printWeight</a>()</td><td class="entry"><a class="el" href="class_neurone.html">Neurone</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>w</b> (defined in <a class="el" href="class_neurone.html">Neurone</a>)</td><td class="entry"><a class="el" href="class_neurone.html">Neurone</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>fonctionActivation</b> (defined in <a class="el" href="class_neurone.html">Neurone</a>)</td><td class="entry"><a class="el" href="class_neurone.html">Neurone</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_neurone.html#aec9263293bad3fce3702e66462fde1fb">fw_activate</a>(double sum, double k) const </td><td class="entry"><a class="el" href="class_neurone.html">Neurone</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_neurone.html#aabf9f1260f6ee90497b1edd96d698152">fw_sum</a>(std::vector&lt; double &gt; x) const </td><td class="entry"><a class="el" href="class_neurone.html">Neurone</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_neurone.html#a276f60498de090878d0b2e8e05f4acc0">getNbPoids</a>()</td><td class="entry"><a class="el" href="class_neurone.html">Neurone</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_neurone.html#ad35958a875fba519d8ccc4984302c376">getWeight</a>()</td><td class="entry"><a class="el" href="class_neurone.html">Neurone</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_neurone.html#ad649e6c655e70db090cfdc5ad4670e34">learn</a>(std::vector&lt; double &gt; x, double o, double k, double mu)</td><td class="entry"><a class="el" href="class_neurone.html">Neurone</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>n</b> (defined in <a class="el" href="class_neurone.html">Neurone</a>)</td><td class="entry"><a class="el" href="class_neurone.html">Neurone</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_neurone.html#aaf4eaa15b62d4767ae4f523eb8b13b4a">Neurone</a>()</td><td class="entry"><a class="el" href="class_neurone.html">Neurone</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_neurone.html#a3a3b7ae3b6182b8a6636f6ca6082c1e5">Neurone</a>(int taille)</td><td class="entry"><a class="el" href="class_neurone.html">Neurone</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_neurone.html#af16f2f95b99e8d94c2ebabb8af0fc4ae">Neurone</a>(int taille, std::vector&lt; double &gt; *x)</td><td class="entry"><a class="el" href="class_neurone.html">Neurone</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_neurone.html#a21cca59967aa7a5cde3580d131d02526">printWeight</a>()</td><td class="entry"><a class="el" href="class_neurone.html">Neurone</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>w</b> (defined in <a class="el" href="class_neurone.html">Neurone</a>)</td><td class="entry"><a class="el" href="class_neurone.html">Neurone</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

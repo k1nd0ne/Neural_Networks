@@ -1,6 +1,6 @@
 var NAVTREE =
 [
-  [ "Reseaux Neuronal", "index.html", [
+  [ "Neural Network & Backpropagation", "index.html", [
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -11,14 +11,18 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Files", null, [
-      [ "File List", "files.html", "files" ]
+      [ "File List", "files.html", "files" ],
+      [ "File Members", "globals.html", [
+        [ "All", "globals.html", null ],
+        [ "Functions", "globals_func.html", null ]
+      ] ]
     ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"_layer_8h_source.html"
+".html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

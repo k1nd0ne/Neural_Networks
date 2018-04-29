@@ -1,6 +1,6 @@
 #ifndef FONCTIONS_H
 #define FONCTIONS_H
-
+#include "../Neurone/FonctionActivation.h"
 #include<vector>
 #include<unistd.h>
 #include<string>
@@ -18,5 +18,5 @@ void swapVec (std::vector<std::vector<double> > * input);
 std::vector < std::vector <std::vector <double> > > getInputUltime(char const * fileName,float pourcentage);
 unsigned int findIndMax(std::vector<double> vec);
 void displayArchi(std::vector<int> info);
-void startLauncher(std::string file, bool arch,int ep);
+void startLauncher(std::string file, bool arch,int ep,double eta,unsigned int gradiant,FonctionActivation::EnumFonctionActivation fct, float auto_off);
 #endif

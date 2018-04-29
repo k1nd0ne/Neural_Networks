@@ -17,8 +17,9 @@ NeuroneB::NeuroneB(int taille,std::vector<double> * x, double biais_w){
  * @method NeuroneB::NeuroneB
  * @param  taille             Taille du neurone
  */
-NeuroneB::NeuroneB(int taille) {
+NeuroneB::NeuroneB(int taille,FonctionActivation::EnumFonctionActivation fct) {
   n = taille;
+  fonctionActivation.setFonctionActivation(fct);
   aleaWeights();
 }
 

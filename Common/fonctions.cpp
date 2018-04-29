@@ -12,88 +12,122 @@
 #include"../Reseau/Reseau.h"
 #include"../Common/fonctions.h"
 #include"../Settings/Settings.h"
-using namespace std;
 
+/**
+* Affichage de vecteur DOUBLE
+* @method printVec
+* @param  vec      Vecteur à afficher
+*/
 void printVec (std::vector<double> vec){
   for (unsigned int i=0;i<vec.size();i++){
     std::cout<<vec[i]<<",";
   }
 }
+/**
+* Affichage de vecteur INT
+* @method printVec
+* @param  vec      Vecteur à afficher
+*/
 void printVec (std::vector<int> vec){
   for (unsigned int i=0;i<vec.size();i++){
     std::cout<<vec[i]<<",";
   }
 }
-
+/**
+* Affichage de vecteur de vecteur de DOUBLE
+* @method printVec
+* @param  vec       Vecteur à afficher
+*/
 void printVec (std::vector<std::vector<double> > vec){
   for (unsigned int i=0;i<vec.size();i++){
     for (unsigned int j=0;j<vec[i].size();j++){
       std::cout<<vec[i][j]<<",";
     }
-    std::cout<<endl<<"----------"<<std::endl;
+    std::cout<<std::endl<<"----------"<<std::endl;
   }
 }
-
+/**
+* Affichage de vecteur de vecteur de vecteur de DOUBLE
+* @method printVec
+* @param  vec       Vecteur à afficher
+*/
 void printVec (std::vector<std::vector<std::vector<double> > > vec){
   std::cout<<"<";
   for(unsigned int k =0; k < vec.size();k++){
     std::cout<<"<";
-  for (unsigned int i=0;i<vec[k].size();i++){
-    std::cout<<"<";
-    for (unsigned int j=0;j<vec[k][i].size();j++){
-      std::cout<<vec[k][i][j];
-      if ( j != vec[k][i].size()-1){
+    for (unsigned int i=0;i<vec[k].size();i++){
+      std::cout<<"<";
+      for (unsigned int j=0;j<vec[k][i].size();j++){
+        std::cout<<vec[k][i][j];
+        if ( j != vec[k][i].size()-1){
+          std::cout<<",";
+        }
+      }
+      std::cout<<">";
+      if ( i != vec[k].size()-1){
         std::cout<<",";
       }
     }
-    std::cout<<">";
-    if ( i != vec[k].size()-1){
-      std::cout<<",";
-    }
-    //std::cout<<endl<<"----------"<<std::endl;
+    std::cout<<">"<<(k!=vec.size() ? " ":">")<<std::endl;
   }
-std::cout<<">"<<(k!=vec.size() ? " ":">")<<endl;}
 }
 
-vector< vector <double> > getInput(char const * fileName){
-
-  ifstream in(fileName); //on veut aussi ouvrir pour connaitre la taille du fichier
-  string ligne;
+/**
+* Recupération des données dans un fichier
+* @method getInput
+* @param  fileName Nom du fichier
+*/
+std::vector< std::vector <double> > getInput(char const * fileName){
+  /**
+  * Counter
+  */
+  std::ifstream in(fileName);
+  std::string ligne;
   int nbLignes = 0;
-  while(std::getline(in, ligne))
-  nbLignes++; //on compte les lignes...
-  in.close(); //et on ferme le fichier
-  ifstream fichier(fileName, ios::in);  // on ouvre le fichier en lecture
+  while(std::getline(in, ligne)){
+    nbLignes++;
+  }
+  in.close();
 
+  /**
+  * Parser
+  */
+  std::ifstream fichier(fileName, std::ios::in);
   if(fichier){
-    vector< vector <double> > stock(nbLignes); //Tableau de chaine de caractère qui va contenir tout le fichier ligne par ligne.
-    cout << "\033[1;36m file " << "\033[1;31m" << fileName << "\033[1;36m opened with success , nbLignes= " <<nbLignes<<"\033[0m"<< endl;
-    string s;
+    std::vector< std::vector <double> > stock(nbLignes); // Tableau de chaine de caractère qui va contenir tout le fichier ligne par ligne
+    std::cout << "\033[1;36m file " << "\033[1;31m" << fileName << "\033[1;36m opened with success , nbLignes= " <<nbLignes<<"\033[0m"<< std::endl;
+    std::string s;
     double temp = 1;
-    string ligne;
+    std::string ligne;
 
     for (int j = 0; j < nbLignes; j++) {
       fichier>>ligne;
-      stringstream ss(ligne);
-      while (getline(ss, s, ',')) {  //strinsplit à partir du caractère ','
-      temp = atof(s.c_str());
-      stock[j].push_back(temp); //on stock chaque information dans une case.
+      std::stringstream ss(ligne);
+      /** strinsplit à partir du caractère ',' */
+      while (getline(ss, s, ',')) {
+        temp = atof(s.c_str());
+        stock[j].push_back(temp);
+      }
     }
+    swapVec(&stock);
+    fichier.close();
+    return stock;
   }
-  swapVec(&stock);//melange du vecteur extrait du fichier
-  fichier.close();  // on ferme le fichier
-  return stock;
-}
-else {
-  cerr << "Impossible d'ouvrir le fichier !" << endl;
-  vector< vector <double> > stock(nbLignes);
-  return stock;
-}
+  else {
+    std::cerr << "\033[0;31m ERROR [ "<< "Can't open file" << " IN FILE " << __FILE__ << " AT LINE " << __LINE__ << " ] \n \033[0m";
+    std::vector< std::vector <double> > stock(nbLignes);
+    return stock;
+  }
 
 }
 
-vector <double> extractResult(vector< vector <double> > * input){
-  vector<double> res(input->size());
+/**
+* Extraction de la derniére colonne d'un tableau bi-dimensionnel (vecteur de vecteur)
+* @method extractResult
+* @param  input         Vecteur de vecteur
+*/
+std::vector <double> extractResult(std::vector< std::vector <double> > * input){
+  std::vector<double> res(input->size());
   unsigned int pos =((*input)[0].size())-1;
   for(unsigned int i=0;i<input->size();i++){
     res[i]=(*input)[i][pos];
@@ -102,6 +136,12 @@ vector <double> extractResult(vector< vector <double> > * input){
   return res;
 }
 
+/**
+* Echange de vecteur aléatoire avec synchronisation
+* @method swapVec
+* @param  input   Vecteur de vecteur à échanger
+* @param  result  Autre vecteur à synchroniser
+*/
 void swapVec (std::vector<std::vector<double> > * input, std::vector <double> * result){
   unsigned int r;
   for (unsigned int i=0;i<input->size();i++){
@@ -112,6 +152,12 @@ void swapVec (std::vector<std::vector<double> > * input, std::vector <double> * 
     iter_swap(result->begin() + i ,result->begin() + r);
   }
 }
+
+/**
+* Echange de vecteur aléatoire
+* @method swapVec
+* @param  input   Vecteur de vecteur à échanger
+*/
 void swapVec (std::vector<std::vector<double> > * input){
   unsigned int r;
   for (unsigned int i=0;i<input->size();i++){
@@ -127,38 +173,49 @@ unsigned int int_to_int(unsigned k) {
   return (k % 2) + 10 * int_to_int(k / 2);
 }
 
+/**
+* Génération d'entrées pour OU et ET
+* @method generateInput
+* @param  n             Nombre d'entrées
+* @param  estet         True si génération de ET sinon False pour OU
+*/
 std::vector<std::vector<double> > generateInput(int n, bool estet){
   int nbtest = (int)pow(2,n);
-vector< vector < double > >  testtab(nbtest, vector<double>(n,0));
-for (int i =0; i < nbtest; i ++){
-  int tmp = i;
-  tmp = int_to_int(tmp);
-  for (int j =0; j < n; j ++){
-    testtab[i][j]= (tmp/(int)pow(10,n-1-j)==1?1 : 0) ;
-    tmp = tmp- (testtab[i][j]==1? (int)pow(10,n-1-j): 0);
+  std::vector< std::vector < double > >  testtab(nbtest, std::vector<double>(n,0));
+  for (int i =0; i < nbtest; i ++){
+    int tmp = i;
+    tmp = int_to_int(tmp);
+    for (int j =0; j < n; j ++){
+      testtab[i][j]= (tmp/(int)pow(10,n-1-j)==1?1 : 0) ;
+      tmp = tmp- (testtab[i][j]==1? (int)pow(10,n-1-j): 0);
+    }
+    if ( !estet && i > 0){
+      testtab[i].push_back(1);
+    }
+    else if ( !estet) {
+      testtab[i].push_back(0);
+    }
+    std::cout << "Serie I :";
+    for (int k =0; k < n; k ++){
+      std::cout<<testtab[i][k];
+    }
+    if (estet && i == nbtest-1){
+      testtab[i].push_back(1);
+    }
+    else if ( estet){
+      testtab[i].push_back(0);
+    }
+    std::cout<<" o : "<<testtab[i][testtab[i].size()-1]<<std::endl;
   }
-  if ( !estet && i > 0){
-    testtab[i].push_back(1);
-  }
-  else if ( !estet) {
-    testtab[i].push_back(0);
-  }
-  cout << "Serie I :";
-  for (int k =0; k < n; k ++){
-    cout<<testtab[i][k];
-  }
-  if (estet && i == nbtest-1){
-    testtab[i].push_back(1);
-  }
-  else if ( estet){
-    testtab[i].push_back(0);
-  }
-  cout<<" o : "<<testtab[i][testtab[i].size()-1]<<endl;
-}
-return testtab;
+  return testtab;
 }
 
-unsigned int findIndMax(vector<double> vec){
+/**
+* @method findIndMax
+* @param  vec        Vecteur
+* @return            Indice du max
+*/
+unsigned int findIndMax(std::vector<double> vec){
   double max = vec[0];
   unsigned int indMax=0;
   for(unsigned int i=0;i<vec.size();i++){
@@ -170,112 +227,124 @@ unsigned int findIndMax(vector<double> vec){
   return indMax;
 }
 
-
- vector < vector <vector <double> > > getInputUltime(char const * fileName,float pourcentage){
-
-  ifstream in(fileName); //on veut aussi ouvrir pour connaitre la taille du fichier
-  string ligne;
+/**
+* Récupération d'entrée dans un fichier
+* @method getInputUltime
+* @param  fileName       Nom du fichier
+* @param  pourcentage    Pourcentage à récuperer pour le training
+*/
+std::vector < std::vector <std::vector <double> > > getInputUltime(char const * fileName,float pourcentage){
+  /**
+  * Counter
+  */
+  std::ifstream in(fileName);
+  std::string ligne;
   int nbLignes = 0;
-  while(std::getline(in, ligne))
-  nbLignes++; //on compte les lignes...
-  in.close(); //et on ferme le fichier
-  ifstream fichier(fileName, ios::in);  // on ouvre le fichier en lecture
+  while(std::getline(in, ligne)){
+    nbLignes++;
+  }
+  in.close();
 
+  /**
+  * Parser
+  */
+  std::ifstream fichier(fileName, std::ios::in);
   if(fichier){
-    vector< vector <double> > stock(nbLignes); //Tableau de chaine de caractère qui va contenir tout le fichier ligne par ligne.
-    cout << "\033[1;36m file " << "\033[1;31m" << fileName << "\033[1;36m opened with success , nbLignes= " <<nbLignes<<"\033[0m"<< endl;
-    string s;
+    std::vector< std::vector <double> > stock(nbLignes); // Tableau de chaine de caractère qui va contenir tout le fichier ligne par ligne
+    std::cout << "\033[1;36m file " << "\033[1;31m" << fileName << "\033[1;36m opened with success , nbLignes= " <<nbLignes<<"\033[0m"<< std::endl;
+    std::string s;
     double temp = 1;
-    string ligne;
-
+    std::string ligne;
     for (int j = 0; j < nbLignes; j++) {
       fichier>>ligne;
-      stringstream ss(ligne);
-      while (getline(ss, s, ',')) {  //strinsplit à partir du caractère ','
-      temp = atof(s.c_str());
-      stock[j].push_back(temp); //on stock chaque information dans une case.
+      std::stringstream ss(ligne);
+      /** strinsplit à partir du caractère ',' */
+      while (getline(ss, s, ',')) {
+        temp = atof(s.c_str());
+        stock[j].push_back(temp); // On stock chaque information dans une case
+      }
     }
+    swapVec(&stock);
+    fichier.close();
+    int tailleTraining = (int)((pourcentage/100) * nbLignes);
+    int tailleTesting = nbLignes - tailleTraining;
+    std::vector< std::vector <std::vector <double> > > result(2);
+    for(int i=0;i<tailleTraining;i++){
+      result[0].push_back(stock[i]);
+    }
+    for(int i=0;i<tailleTesting;i++){
+      result[1].push_back(stock[i+tailleTraining]);
+    }
+    return result;
   }
-  swapVec(&stock);//melange du vecteur extrait du fichier
-  fichier.close();  // on ferme le fichier
-  int tailleTraining = (int)((pourcentage/100) * nbLignes);
-  int tailleTesting = nbLignes - tailleTraining;
-  vector< vector <vector <double> > > result(2);
-  for(int i=0;i<tailleTraining;i++){
-    result[0].push_back(stock[i]);
+  else {
+    std::cerr << "\033[0;31m ERROR [ "<< "Can't open file" << " IN FILE " << __FILE__ << " AT LINE " << __LINE__ << " ] \n \033[0m";
+    std::vector< std::vector < std::vector <double> > > result(2);
+    return result;
   }
-  for(int i=0;i<tailleTesting;i++){
-    result[1].push_back(stock[i+tailleTraining]);
-  }
-  return result;
-}
-else {
-  cerr << "Impossible d'ouvrir le fichier !" << endl;
-  vector< vector < vector <double> > > result(2);
-  return result;
 }
 
-}
+/**
+* Affichage de l'architecture (cf. PYTHON)
+* @method displayArchi
+* @param  info         Vecteur d'information sur l'architecture
+*/
 void displayArchi(std::vector<int> info){
-string endline = "network.draw()";
-string begin = "network = DrawNN( [";
-string dyNeuron= " ";
-    for (unsigned int i = 0; i <= info.size()-2; i++){
-      dyNeuron = to_string(info[i]) +",";
-      begin+=dyNeuron;
-    }
-    dyNeuron = to_string(info[info.size()-1]);
-    begin += dyNeuron +"] )";
-
-system("sed -i '$ d' Archi.py");
-system("sed -i '$ d' Archi.py");
-
-    ofstream fichier("Archi.py", ios::app);  //déclaration du flux et ouverture du fichier
-
-            if(fichier)  // si l'ouverture a réussi
-            {
-                    fichier<< begin <<"\n";
-                    fichier<<endline;
-                    fichier.close();  // on referme le fichier
-            }
-            else  { // sinon
-                    cerr << "Erreur à l'ouverture !" << endl;
-                  }
-system("python Archi.py");
+  std::string endline = "network.draw()";
+  std::string begin = "network = DrawNN( [";
+  std::string dyNeuron= " ";
+  for (unsigned int i = 0; i <= info.size()-2; i++){
+    dyNeuron = std::to_string(info[i]) + ",";
+    begin+=dyNeuron;
+  }
+  dyNeuron = std::to_string(info[info.size()-1]);
+  begin += dyNeuron +"] )";
+  system("sed -i '$ d' Archi.py");
+  system("sed -i '$ d' Archi.py");
+  std::ofstream fichier("Archi.py", std::ios::app);
+  if(fichier)
+  {
+    fichier<< begin <<"\n";
+    fichier<<endline;
+    fichier.close();
+  }
+  else  {
+    std::cerr << "\033[0;31m ERROR [ "<< "Can't open file" << " IN FILE " << __FILE__ << " AT LINE " << __LINE__ << " ] \n \033[0m";
+  }
+  system("python Archi.py");
 }
-void  startLauncher(string file, bool arch, int ep) {
-  string newfile= "./TrainingSets/"+file;
+void  startLauncher(std::string file, bool arch, int ep, double eta,unsigned int gradient,FonctionActivation::EnumFonctionActivation fct, float auto_off) {
+  std::string newfile= "./TrainingSets/"+file;
   const char * fileName = newfile.c_str();
-  settings Settings(fileName);
-  vector<int> archi = (*Settings.getArchi());
-  cout << "Affichage de l'architecture du reseau, Fermez pour commencer" << endl;
+  Settings Settings(fileName);
+  std::vector<int> archi = (*Settings.getArchi());
+  std::cout << "Affichage de l'architecture du reseau, Fermez pour commencer" << std::endl;
   if(arch == true){
-  displayArchi(archi);
+    displayArchi(archi);
   }
   system("clear");
-  Reseau * rezo = new Reseau(archi.size(),archi,1.0,0.01);
-  std::vector<vector <vector <double> > > trainingettesting = getInputUltime(fileName,80);
-  std::vector<vector<double> > training = trainingettesting[0];
-  std::vector<vector<double> > testing = trainingettesting[1];
+  Reseau * rezo = new Reseau(archi.size(),archi,1.0,eta,fct);
+  std::vector<std::vector <std::vector <double> > > trainingettesting = getInputUltime(fileName,80);
+  std::vector<std::vector<double> > training = trainingettesting[0];
+  std::vector<std::vector<double> > testing = trainingettesting[1];
   int epoch = ep;
-  vector<double> res(Settings.getDifferentOutputs()->size());
+  std::vector<double> res(Settings.getDifferentOutputs()->size());
   int temp;
-  vector<vector<vector<double> > > testData(training.size());
-    cout<< "\033[1;33m"<<endl;
-    cout<<"--------------------------------"<<endl;
+  std::vector<std::vector<std::vector<double> > > testData(training.size());
+  std::cout<< "\033[1;33m"<<std::endl;
+  std::cout<<"--------------------------------"<<std::endl;
   for(unsigned int k=0;k<Settings.getDifferentOutputs()->size();k++){
-    vector<double> mapVect(Settings.getDifferentOutputs()->size(),0);
-    cout<<(*Settings.getDifferentOutputs())[k]<<" has been mapped to {" ;
+    std::vector<double> mapVect(Settings.getDifferentOutputs()->size(),0);
+    std::cout<<(*Settings.getDifferentOutputs())[k]<<" has been mapped to {" ;
     for(unsigned int z=0;z<mapVect.size();z++){
-      if(z==k)cout<<"1," ;
-      else cout<<"0," ;
+      if(z==k)std::cout<<"1," ;
+      else std::cout<<"0," ;
     }
-    cout<<"}"<<endl;
+    std::cout<<"}"<<std::endl;
 
   }
-
-  cout<<"--------------------------------"<<endl;
-  cout<<"\033[0m"<<endl;
+  std::cout<<"--------------------------------"<<std::endl;
+  std::cout<<"\033[0m"<<std::endl;
   for (unsigned int i = 0; i < training.size(); i++){
     temp=(int)training[i][training[i].size()-1];
     training[i].pop_back();
@@ -288,31 +357,13 @@ void  startLauncher(string file, bool arch, int ep) {
     testData[i] = {training[i],res};
   }
 
-  cout << "Learning Starting..."<<endl;
+  std::cout << "Learning Starting..."<<std::endl;
   double pourcentage;
   int deb = time(NULL);
-  for(int i=0;i<epoch;i++){
-    pourcentage = (((double)i/(double)epoch)*100);
-    swapVec(&testData[0]);
-    rezo->learn(testData);
-    std::cout<< (int)pourcentage << "% (" << i << " epoch )\r"<< std::flush;
-  }
-  int delta = time(NULL)-deb;
-  cout << "\r\033[1;36m 100% \033[0m";
-  cout << "<\033[1;33m DONE \033[0m>         "<<endl;
-  cout << "\033[1;36m Learning Completed \033[0m" << endl;
-  cout << "Displaying last recorded weights..." << endl;
-  sleep(2);
-  rezo->printWeight();
-  int tmp = 0;
-  int nberr = 0;
-  int anciennenberr=0;
-  vector<double> result (Settings.getDifferentOutputs()->size());
 
 
 
-  //new test with values unknown to the neural network
-  std::vector<vector<double> > expectedRes(testing.size());
+  std::vector<std::vector<double> > expectedRes(testing.size());
   for (unsigned int i = 0; i < testing.size(); i++){
     temp=(int)testing[i][testing[i].size()-1];
     for(unsigned int j=0;j<Settings.getDifferentOutputs()->size();j++){
@@ -323,33 +374,75 @@ void  startLauncher(string file, bool arch, int ep) {
     }
     expectedRes[i]=res;
   }
+  std::vector<double> result (Settings.getDifferentOutputs()->size());
+  int tmp = 0;
+  int nberr = 0;
+  int anciennenberr=0;
 
+  for(int i=0;i<epoch;i++){
+    pourcentage = (((double)i/(double)epoch)*100);
+    swapVec(&testData[0]);
+    rezo->learn(testData,gradient);
+    int deltat = time(NULL) - deb;
+
+    if (auto_off) {
+      tmp = 0;
+      nberr = 0;
+      anciennenberr=0;
+      for(unsigned int i=0;i<testing.size();i++){
+        result= rezo->fire_all(testing[i]);
+        std::vector<double> print (Settings.getDifferentOutputs()->size(),0);
+        print[findIndMax(result)]=1;
+        anciennenberr=nberr;
+        bool err = false;
+        for(unsigned int l =0;l<print.size();l++){
+          if (print[l]!=expectedRes[i][l]) err=true;
+        }
+        nberr += err;
+        tmp++;
+      }
+
+      std::cout<< "\033[1;32m >> " << (int)pourcentage << "% | " << i << " epoch | "<< deltat <<" secondes | Error "<< ((float)nberr/tmp)*100 <<"%                 \r"<< std::flush;
+      if (((float)nberr/tmp)*100<auto_off) break;
+    }
+    else{
+    std::cout<< "\033[1;32m >> " << (int)pourcentage << "% | " << i << " epoch | "<< deltat <<" secondes               \r"<< std::flush;
+    }
+  }
+  int delta = time(NULL)-deb;
+  std::cout << "\r\033[1;36m 100% \033[0m";
+  std::cout << "<\033[1;33m DONE \033[0m>         "<< std::endl;
+  std::cout << "\033[1;36m Learning Completed \033[0m" << std::endl;
+  std::cout << "Displaying last recorded weights..." << std::endl;
+  rezo->printWeight();
+  tmp = 0;
+  nberr = 0;
+   anciennenberr=0;
+
+  /** Nouveau test avec des valeurs inconnues pour le résaux neuronal */
   for(unsigned int i=0;i<testing.size();i++){
-    cout<<"Test; input : ";
+    std::cout<<"Test; input : ";
     printVec(testing[i]);
-    cout<<" attendu : ";
+    std::cout<<" attendu : ";
     printVec(expectedRes[i]);
-    cout<<" recu : ";
+    std::cout<<" recu : ";
     result= rezo->fire_all(testing[i]);
-    vector<double> print (Settings.getDifferentOutputs()->size(),0);
+    std::vector<double> print (Settings.getDifferentOutputs()->size(),0);
     print[findIndMax(result)]=1;
-
     anciennenberr=nberr;
     bool err = false;
     for(unsigned int l =0;l<print.size();l++){
       if (print[l]!=expectedRes[i][l]) err=true;
     }
     nberr += err;
-
-
     printVec(print);
     if ( nberr > anciennenberr){
-      cout<< "\033[1;31m /!\\"<<"\033[0m";
+      std::cout<< "\033[1;31m /!\\"<<"\033[0m";
     }
-    cout<<endl;
+    std::cout<<std::endl;
     tmp++;
   }
-  cout<<"\033[1;33mNombre d'erreur : \033[0m \033[1;32m"<<(nberr/tmp)*100<<"\% \033[0m --->("<<nberr<<" / "<<tmp<<")"<<endl;
-  cout<<"\033[1;33mTemps d'apprentissage : \033[1;33m"<<delta<<" secondes \033[0m"<<endl;
+  std::cout<<"\033[1;33mNombre d'erreur : \033[0m \033[1;32m"<<((float)nberr/tmp)*100<<"\% \033[0m --->("<<nberr<<" / "<<tmp<<")"<<std::endl;
+  std::cout<<"\033[1;33mTemps d'apprentissage : \033[1;33m"<<delta<<" secondes \033[0m"<<std::endl;
 
 }

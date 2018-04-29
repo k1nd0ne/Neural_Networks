@@ -1,4 +1,21 @@
 var searchData=
 [
-  ['learn',['learn',['../class_neurone.html#ad649e6c655e70db090cfdc5ad4670e34',1,'Neurone::learn()'],['../class_neurone_b.html#a863968dd758150552330f8cdd33fe717',1,'NeuroneB::learn()']]]
+  ['getarchi',['getArchi',['../class_settings.html#ad5ecbf5f2672f3ddc9c5809402cf24bf',1,'Settings']]],
+  ['getargument',['getArgument',['../class_option_tab.html#a433b4d07f7c7f2d389f03e2b165f4f2c',1,'OptionTab']]],
+  ['getdifferentoutputs',['getDifferentOutputs',['../class_settings.html#a79aff561ecb30eea8900a322223b20d0',1,'Settings']]],
+  ['getinput',['getInput',['../class_layer.html#aacf5f78bee474a8b95f22b71957ae8f4',1,'Layer']]],
+  ['getintitul',['getIntitul',['../class_option_tab.html#acfc151c8ba1d8bddb7744ce8ae59cd8f',1,'OptionTab']]],
+  ['getnbneurones',['getNbNeurones',['../class_layer.html#afa5e2d965f52577f5ac9332f91135abd',1,'Layer']]],
+  ['getnbpoids',['getNbPoids',['../class_neurone.html#a276f60498de090878d0b2e8e05f4acc0',1,'Neurone::getNbPoids()'],['../class_neurone_b.html#ad406a05993ed1a7eba6dfbc0f8908716',1,'NeuroneB::getNbPoids()']]],
+  ['getnbrhiddenlayers',['getNbrHiddenLayers',['../class_settings.html#a8ab695b0b4c99e48c30a89f49d3f3a27',1,'Settings']]],
+  ['getneurone',['getNeurone',['../class_layer.html#a1952f73028e06428dba8ce544c8bbaff',1,'Layer']]],
+  ['getoptionid',['getOptionID',['../class_option.html#a27a99cccc32cd28cf87decadd3821013',1,'Option::getOptionID()'],['../class_option_tab.html#a8ce61fa7f0c8aaab08dcc0d70abeb9b3',1,'OptionTab::getOptionID()']]],
+  ['getoptionint',['getOptionInt',['../class_option.html#a071b24098adb995112018aa96f665826',1,'Option']]],
+  ['getoptionrac',['getOptionRac',['../class_option.html#a7101b594be73889c7b2b8f4c59056def',1,'Option']]],
+  ['getoptiontype',['getOptionType',['../class_option.html#af247c5fbae431fb48acd06c384cc90be',1,'Option']]],
+  ['getraccour',['getRaccour',['../class_option_tab.html#a6b22f45d47a04ba2287516bc061f2a14',1,'OptionTab']]],
+  ['gettype',['getType',['../class_type.html#ac6f332df275d9c23c2711afc67b0ae15',1,'Type']]],
+  ['getvaleuractivation',['getValeurActivation',['../class_fonction_activation.html#a3dde7b01c5b182596d71b859c702cfe5',1,'FonctionActivation']]],
+  ['getvaleurderivee',['getValeurDerivee',['../class_fonction_activation.html#a1505e15bf464c536d34c9934b71af8e6',1,'FonctionActivation']]],
+  ['getweight',['getWeight',['../class_neurone.html#ad35958a875fba519d8ccc4984302c376',1,'Neurone']]]
 ];

@@ -18,13 +18,13 @@ private:
   int nbLayers;	//indicating the number of layers you want;
  public:
   //Contructor
-  Reseau(int,std::vector<int>,double,double); //A Network is a vector composed of Layers
+  Reseau(int,std::vector<int>,double,double,FonctionActivation::EnumFonctionActivation fct); //A Network is a vector composed of Layers
 
 
   //Methods
   std::vector<double> fire_all(std::vector<double> input);
-  void learn(std::vector<std::vector<std::vector<double> > > jeuxTest);
-  void backPropagation(std::vector<double> output);
+  void learn(std::vector<std::vector<std::vector<double> > > jeuxTest, unsigned int nbPasDescenteGradient);
+  void backPropagation(std::vector<double> erreurs);
   void printWeight();
 };
 #endif

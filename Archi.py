@@ -102,5 +102,5 @@ class DrawNN():
             network.add_layer(l)
         network.draw()
 
-network = DrawNN( [9,4,5,2] )
+network = DrawNN( [4,10,10,10,10,10,3] )
 network.draw()

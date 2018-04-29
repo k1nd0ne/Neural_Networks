@@ -12,6 +12,7 @@ var class_neurone =
     [ "getWeight", "class_neurone.html#ad35958a875fba519d8ccc4984302c376", null ],
     [ "learn", "class_neurone.html#ad649e6c655e70db090cfdc5ad4670e34", null ],
     [ "printWeight", "class_neurone.html#a21cca59967aa7a5cde3580d131d02526", null ],
+    [ "fonctionActivation", "class_neurone.html#aa6ba92d879763af5f50536362b8e00de", null ],
     [ "n", "class_neurone.html#a2a6a3fcb4d1a6f38914641b006bb156d", null ],
     [ "w", "class_neurone.html#a7a030ab5a110af5b645d7ca5218ca359", null ]
 ];

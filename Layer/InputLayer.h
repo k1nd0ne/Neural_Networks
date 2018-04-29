@@ -4,7 +4,7 @@
 
 class InputLayer : public Layer {
 public:
-  InputLayer(int);
+  InputLayer(int,FonctionActivation::EnumFonctionActivation fct);
   std::vector<double> fire(std::vector<double>, double);
 };
 #endif

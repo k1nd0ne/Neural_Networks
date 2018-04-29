@@ -4,13 +4,13 @@
  * @method InputLayer::InputLayer
  * @param  taille                 Nombre de neurones dans le layer
  */
-InputLayer::InputLayer(int taille){
+InputLayer::InputLayer(int taille,FonctionActivation::EnumFonctionActivation fct){
   membres =std::vector<Neurone *> (taille);
   nbNeurone = taille;
   input=std::vector<double>(taille);
   output= std::vector<double>(taille);
   for (int i = 0; i < taille; i ++){
-    membres[i] = new Neurone(1, new std::vector<double>(1,1));
+    membres[i] = new Neurone(1, new std::vector<double>(1,1),fct);
   }
 }
 /**

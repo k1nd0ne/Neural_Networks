@@ -4,13 +4,21 @@
 #include<iostream>
 
 class Type {
+public:
+	enum TypeEnum {
+		NONE,
+		INT,
+		FLOAT,
+		STRING
+	};
 	private :
-	std::string m_type;
+	Type::TypeEnum m_type;
 	public :
 	Type();
-	Type(std::string type);
-	void affiche() const;
-	void setType(std::string type);
-	std::string getType() const;
+	Type(Type::TypeEnum type);
+	void print(std::ostream& os) const;
+	void setType(Type::TypeEnum type);
+	Type::TypeEnum getType() const;
 };
+std::ostream& operator<<(std::ostream& os, Type t);
 #endif

@@ -11,12 +11,12 @@ class Option {
 	std::string m_description;
 	public :
 	Option();
-	Option(int id, const std::string &intitul, const std::string &m_rac, const std::string &type, const std::string &m_description);
+	Option(int id, const std::string &intitul, const std::string &m_rac, const Type::TypeEnum type, const std::string &m_description);
 	int getOptionID() const;
-	std::string getOptionType() const;
+ 	Type::TypeEnum getOptionType() const;
 	std::string getOptionInt() const;
 	std::string getOptionRac() const;
-	void setOptionType(std::string &t);
+	void setOptionType(Type::TypeEnum t);
 	void setOptionInt(std::string &intitul);
 	void setOptionRac(std::string &rac);
 	void print(std::ostream& os) const;

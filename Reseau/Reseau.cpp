@@ -10,7 +10,7 @@ using namespace std;
  * @param  k                 constante k dont depends la sigmoide
  * @param  eta               coefficient d'evolution
  */
-Reseau::Reseau(int nbLayers, std::vector<int> layerInformation,double k,double eta) {
+Reseau::Reseau(int nbLayers, std::vector<int> layerInformation,double k,double eta,FonctionActivation::EnumFonctionActivation fct) {
   this->eta = eta;
   this->k = k;
   input=std::vector<double>(layerInformation[0]);
@@ -19,14 +19,14 @@ Reseau::Reseau(int nbLayers, std::vector<int> layerInformation,double k,double e
   reseau = std::vector<Layer*>(nbLayers);
   cout << "\033[1;33m| Number of layers : \033[0m" << nbLayers << endl;
   cout << "\033[1;33m| Creating Input Layer \033[0m\n";
-  reseau[0] = new InputLayer(layerInformation[0]);
+  reseau[0] = new InputLayer(layerInformation[0],fct);
   cout << "\033[1;33m| Number of Neurone on Layer number \033[0m " << 0 <<" : " << layerInformation[0] << endl;
   cout << "\033[1;33m| Creating Hidden + Output Layers \033[0m\n\n";
   for(unsigned int i = 1; i < layerInformation.size()-1; i++){
-    reseau[i] = new Layer(Layer::HIDDEN,layerInformation[i], layerInformation[i-1]);	//The others are just the 'Hidden' Layers
+    reseau[i] = new Layer(Layer::HIDDEN,layerInformation[i], layerInformation[i-1],fct);	//The others are just the 'Hidden' Layers
     cout << "\033[1;33m| Number of Neurone on Layer number \033[0m " << i <<" : " << layerInformation[i] << endl;
   }
-  reseau[layerInformation.size()-1] = new Layer(Layer::OUTPUT,layerInformation[layerInformation.size()-1],layerInformation[layerInformation.size()-2]);
+  reseau[layerInformation.size()-1] = new Layer(Layer::OUTPUT,layerInformation[layerInformation.size()-1],layerInformation[layerInformation.size()-2],fct);
   cout << "\033[1;33m| Number of Neurone on Layer number \033[0m " << layerInformation.size()-1 <<" : " << layerInformation[layerInformation.size()-1] << endl;
   derrdact =std::vector<std::vector<std::vector<double> > > (nbLayers-1);
   dsig = std::vector<std::vector<std::vector<double> > >(nbLayers-1);
@@ -73,11 +73,26 @@ void Reseau::printWeight(){
  * @param  jeuxTest      Vecteur de vecteur de vecteur : décrivant en jeuxTest[i][0]
  *  le vecteur d'entrée et en jeuxTest[i][1] la sortie attendue
  */
-void Reseau::learn(std::vector<std::vector<std::vector<double> > > jeuxTest){
-  for(unsigned int i = 0; i<jeuxTest.size();i++){
-    output=fire_all(jeuxTest[i][0]);
-    backPropagation(jeuxTest[i][1]);
-  }
+void Reseau::learn(std::vector<std::vector<std::vector<double> > > jeuxTest, unsigned int nbPasDescenteGradient){
+    std::vector<double> erreurs(output.size());
+    for(unsigned int i = 0; i<jeuxTest.size();i++){
+        output=fire_all(jeuxTest[i][0]);
+
+       if(i%nbPasDescenteGradient == 0){
+          for(unsigned int j=0; j<erreurs.size(); j++){
+              erreurs[j] = 0;
+          }
+        }
+        for(unsigned int j=0; j<erreurs.size(); j++){
+            erreurs[j] += (jeuxTest[i][1][j] - output[j]);
+        }
+        if(i%nbPasDescenteGradient == nbPasDescenteGradient-1){
+            for(unsigned int j=0; j<erreurs.size(); j++){
+              erreurs[j] /= (double) nbPasDescenteGradient;
+            }
+            backPropagation(erreurs);
+        }
+    }
 }
 
 /**
@@ -87,43 +102,43 @@ void Reseau::learn(std::vector<std::vector<std::vector<double> > > jeuxTest){
  * @param  k                       Valeur du coefficient
  * @param  eta                     Valeur d'eta
  */
- void Reseau::backPropagation(std::vector<double> output){
+void Reseau::backPropagation(std::vector<double> erreurs){
    /*On initialise dans un premier temps nos trois matrices 3d*/
-   for(int l = nbLayers - 1; l>0; l--){
-     Layer* layerCourant = reseau[l];
-     for(int n = 0; n < layerCourant->getNbNeurones(); n++){
-       Neurone* neuroneCourant = (layerCourant->getNeurone(n));
-       double s = neuroneCourant->fw_sum(layerCourant->getInput());
-       for(int i=0; i < neuroneCourant->getNbPoids(); i++){
-         if(i<neuroneCourant->getNbPoids()-1){
-           dsig[l-1][n][i] = (layerCourant->getInput())[i];
-         }
-         else{
-           dsig[l-1][n][i] = 1;
-         }
-         dact[l-1][n][i] = (k*exp(-k*s))* (1/(1+exp(-k*s)*(1+exp(-k*s))));
-         if(l == nbLayers - 1){
-           derrdact[l-1][n][i] = -2*(output[n] - neuroneCourant->fw_activate(s,k));
-         }
-         else{
-           double inter = 0;
-           for(int j = 0; j < reseau[l+1]->getNbNeurones(); j++){
-             double wj = (*((reseau[l+1]->getNeurone(j)))->getWeight())[n];
-             inter += wj * derrdact[l][j][n] * dact[l][j][n];
-           }
-           derrdact[l-1][n][i] = inter;
-         }
-       }
-     }
-   }
-   for(int l = nbLayers - 1; l>0; l--){
-     Layer* layerCourant = (reseau[l]);
-     for(int n = 0; n < reseau[l]->getNbNeurones(); n++){
-       Neurone* neuroneCourant = (layerCourant->getNeurone(n));
-       for(int i=0; i < neuroneCourant->getNbPoids(); i++){
-         vector<double> * w = neuroneCourant->getWeight();
-         (*w)[i] = (*w)[i] - eta*derrdact[l-1][n][i]*dsig[l-1][n][i]*dact[l-1][n][i];
-       }
-     }
-   }
+    for(int l = nbLayers - 1; l>0; l--){
+        Layer* layerCourant = reseau[l];
+        for(int n = 0; n < layerCourant->getNbNeurones(); n++){
+            Neurone* neuroneCourant = (layerCourant->getNeurone(n));
+            double s = neuroneCourant->fw_sum(layerCourant->getInput());
+            for(int i=0; i < neuroneCourant->getNbPoids(); i++){
+                if(i<neuroneCourant->getNbPoids()-1){
+                    dsig[l-1][n][i] = (layerCourant->getInput())[i];
+                }
+                else{
+                    dsig[l-1][n][i] = 1;
+                }
+                dact[l-1][n][i] = neuroneCourant->derive_activate(s,k);
+                if(l == nbLayers - 1){
+                    derrdact[l-1][n][i] = -2*erreurs[n];
+                }
+                else{
+                    double inter = 0;
+                    for(int j = 0; j < reseau[l+1]->getNbNeurones(); j++){
+                        double wj = (*((reseau[l+1]->getNeurone(j)))->getWeight())[n];
+                        inter += wj * derrdact[l][j][n] * dact[l][j][n];
+                    }
+                    derrdact[l-1][n][i] = inter;
+                }
+            }
+        }
+    }
+    for(int l = nbLayers - 1; l>0; l--){
+        Layer* layerCourant = (reseau[l]);
+        for(int n = 0; n < reseau[l]->getNbNeurones(); n++){
+            Neurone* neuroneCourant = (layerCourant->getNeurone(n));
+            for(int i=0; i < neuroneCourant->getNbPoids(); i++){
+                vector<double> * w = neuroneCourant->getWeight();
+                (*w)[i] = (*w)[i] - eta*derrdact[l-1][n][i]*dsig[l-1][n][i]*dact[l-1][n][i];
+            }
+        }
+    }
  }

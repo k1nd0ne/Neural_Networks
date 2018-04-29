@@ -8,7 +8,7 @@ LIBRARY = # <- Arguments supplémentaires de compilation finale
 ###############################################################################
 #                                     MAIN                                    #
 all : main common neurone layer reseau settings option optionTab type
-	$(COMPIL) $(FLAGS) Settings.o Neurone.o main.o fonctions.o Layer.o Reseau.o NeuroneB.o FonctionActivation.o InputLayer.o Option.o OptionTab.o Type.o -o $(NAME) $(LIBRARY)
+	$(COMPIL) $(FLAGS) Settings.o Neurone.o main.o fonctions.o Layer.o Reseau.o NeuroneB.o FonctionActivation.o InputLayer.o Option.o OptionTab.o Type.o -o $(NAME) $(LIBRARY);
 main : main.cpp
 	$(COMPIL) $(FLAGS) -c main.cpp
 ###############################################################################
@@ -65,6 +65,8 @@ Type.o : ./Option/Type.cpp
 #                                   MODIFS                                    #a
 
 clean :
+	rm *.o
+mrproper :
 	rm *.o launcher
 debug: FLAGS += -O0 -g
 debug: all

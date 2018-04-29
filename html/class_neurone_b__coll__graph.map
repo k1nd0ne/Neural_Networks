@@ -1,3 +1,4 @@
 <map id="NeuroneB" name="NeuroneB">
-<area shape="rect" id="node2" href="$class_neurone.html" title="Neurone" alt="" coords="10,5,81,32"/>
+<area shape="rect" id="node2" href="$class_neurone.html" title="Neurone" alt="" coords="35,95,106,121"/>
+<area shape="rect" id="node3" href="$class_fonction_activation.html" title="FonctionActivation" alt="" coords="5,5,136,32"/>
 </map>

@@ -15,7 +15,7 @@ OptionTab::OptionTab() : m_Tab(), m_nb_options(0) {}
  */
 void OptionTab::addOption(const Option &opt) {
 	if (m_nb_options == 10) {
-		std::cerr<<"Erreur lors de la création de l'option : nombre maximum d'option atteint"<<__FILE__<<__LINE__<<std::endl;
+		std::cerr << "\033[0;31m ERROR [ "<< "Error when trying to create an option, to many options created" << " IN FILE " << __FILE__ << " AT LINE " << __LINE__ << " ] \n \033[0m";
 		std::terminate();
 	}
 	else {
@@ -28,7 +28,6 @@ void OptionTab::addOption(const Option &opt) {
  * @method OptionTab::PrintOptions
  */
 void OptionTab::printOptions() const {
-	std::cout << " Vos Option : "<<std::endl;
 	for (size_t i = 0; i < m_nb_options; i++) {
 		std::cout << m_Tab[i] << '\n';
 	}
@@ -54,7 +53,7 @@ int OptionTab::getOptionID(const std::string &opt) const{
  * @param  opt                    Nom de l'option
  * @return                        Argument de cette option
  */
-std::string OptionTab::getArgument(const std::string &opt) const {
+Type::TypeEnum OptionTab::getArgument(const std::string &opt) const {
 	int i = 0;
 	bool trouve = false;
 	while (i < 10 && trouve == false ) {

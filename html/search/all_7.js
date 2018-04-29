@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['printweight',['printWeight',['../class_neurone.html#a21cca59967aa7a5cde3580d131d02526',1,'Neurone::printWeight()'],['../class_neurone_b.html#addc614b9370d832cbb67ef080f277528',1,'NeuroneB::printWeight()']]]
+  ['main',['main',['../main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main.cpp']]],
+  ['main_2ecpp',['main.cpp',['../main_8cpp.html',1,'']]]
 ];

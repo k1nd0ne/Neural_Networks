@@ -44,7 +44,7 @@ int main(void){
 					fichier.close();  // on ferme le fichier
 					}
 					else {
-               cerr << "Impossible d'ouvrir le fichier !" << endl;
+            std::cerr << "\033[0;31m ERROR [ "<< "Can't open file" << " IN FILE " << __FILE__ << " AT LINE " << __LINE__ << " ] \n \033[0m";
 						 }
 
 

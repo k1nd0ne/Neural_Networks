@@ -53,7 +53,7 @@ vector< vector <double> > getInput(char const * fileName){
   return stock;
 }
 else {
-  cerr << "Impossible d'ouvrir le fichier !" << endl;
+  std::cerr << "\033[0;31m ERROR [ "<< "Can't open file" << " IN FILE " << __FILE__ << " AT LINE " << __LINE__ << " ] \n \033[0m";
   vector< vector <double> > stock(nbLignes);
   return stock;
 }

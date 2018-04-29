@@ -17,7 +17,7 @@ Option::Option() : m_id(-1), m_intitul(), m_rac(), m_type(), m_description(){}
  * @param  type           Type d'option
  * @param  description    Description de l'option
  */
-Option::Option(int id, const string &intitul, const string &rac, const std::string &type, const string &description) : m_id(id), m_intitul(intitul), m_rac(rac), m_type(type), m_description(description) {}
+Option::Option(int id, const string &intitul, const string &rac, const Type::TypeEnum type, const string &description) : m_id(id), m_intitul(intitul), m_rac(rac), m_type(type), m_description(description) {}
 /**
  * @method Option::GetOptionId
  * @return ID de l'option
@@ -27,7 +27,7 @@ int Option::getOptionID() const { return m_id; }
  * @method Option::GetOptionType
  * @return Type d'option
  */
-string Option::getOptionType() const { return m_type.getType(); }
+Type::TypeEnum Option::getOptionType() const { return m_type.getType(); }
 /**
  * @method Option::GetOptionInt
  * @return Intitulé de l'option
@@ -43,7 +43,7 @@ string Option::getOptionRac() const { return m_rac; }
  * @method Option::SetOptionType
  * @param  t                     Nouveau type d'option
  */
-void Option::setOptionType(std::string &t ) { m_type.setType(t); }
+void Option::setOptionType(Type::TypeEnum t ) { m_type.setType(t); }
 /**
  * @method Option::SetOptionInt
  * @param  intitul              Nouveau Intitulé
@@ -61,7 +61,7 @@ void Option::setOptionRac(std::string &rac) { m_rac = rac; }
  * @param  os    Flux
  */
 void Option::print(std::ostream& os) const{
-	os << m_intitul << " (" << m_rac <<")"<<" <";m_type.affiche(); cout <<"> ""\t"<<m_description<<std::endl;
+	os << m_intitul << " (" << m_rac <<")"<<" <" << m_type <<"> ""\t"<<m_description<<std::endl;
 }
 
 std::ostream& operator<<(std::ostream& os, Option o )

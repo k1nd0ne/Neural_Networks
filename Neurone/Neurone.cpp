@@ -11,9 +11,11 @@ Neurone::Neurone(){
  * Constructeur par nombre d'entrées
  * @method Neurone::Neurone
  * @param  n           Nombre d'entrées
+ * @param  n           Fonction d'Activation
  */
-Neurone::Neurone(int n){
+Neurone::Neurone(int n,FonctionActivation::EnumFonctionActivation fct){
   this->n = n;
+  fonctionActivation.setFonctionActivation(fct);
   aleaWeights();
 }
 /**
@@ -22,8 +24,9 @@ Neurone::Neurone(int n){
  * @param  taille           Nombre d'entrées
  * @param  x                Vecteur de poids
  */
-Neurone::Neurone(int n, std::vector<double> * x){
+Neurone::Neurone(int n, std::vector<double> * x,FonctionActivation::EnumFonctionActivation fct){
   w = x;
+  fonctionActivation.setFonctionActivation(fct);
   this->n = n;
 }
 
@@ -78,7 +81,7 @@ double Neurone::derive_activate(double sum, double k)const{
  * @method Neurone::learn
  * @param  x              Vecteur de poids
  * @param  o              Valeur attendue
- * @param  k              Valeur du coefficient de sigmoid k
+ * @param  k              Valeur de l'hyperparamètre
  * @param  mu             Taux d'apprentissage | Learning rate
  */
 void Neurone::learn(std::vector<double> x,double o,double k, double mu){

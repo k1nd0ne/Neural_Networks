@@ -12,7 +12,7 @@ class OptionTab {
 	void addOption(const Option &opt);
 	void printOptions() const;
 	int getOptionID(const std::string &opt) const;
-	std::string getArgument(const std::string &opt) const;
+	Type::TypeEnum getArgument(const std::string &opt) const;
 	std::string getRaccour(const std::string &opt) const;
 	std::string getTypeOption(const std::string &opt) const;
 	std::string getIntitul(const std::string &opt) const;
