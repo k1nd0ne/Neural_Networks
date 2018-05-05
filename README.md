@@ -25,6 +25,17 @@ $ ./launcher --help
 ```sh
 $ python -m SimpleHTTPServer
 ```
-
-
-
+##### pour le perceptron allez sur :
+ - pour le ET
+```sh
+http://localhost:8000/javascript/?path=ET
+```
+ - pour le OU
+```sh
+http://localhost:8000/javascript/?path=OU
+```
+##### pour le réseau allez sur :
+  - 
+```sh
+http://localhost:8000/javascript_network/
+```
