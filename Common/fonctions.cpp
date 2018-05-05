@@ -279,6 +279,7 @@ std::vector < std::vector <std::vector <double> > > getInputUltime(char const * 
   }
   else {
     std::cerr << "\033[0;31m ERROR [ "<< "Can't open file" << " IN FILE " << __FILE__ << " AT LINE " << __LINE__ << " ] \n \033[0m";
+    exit(2);
     std::vector< std::vector < std::vector <double> > > result(2);
     return result;
   }

@@ -37,7 +37,7 @@ int main (int argc, char **argv) {
   opts.addOption(Option( GRAD,       "--gradiant","-gr",Type::INT,   "Configure the number of epoch before doing the backpropagation (error average)"));
   opts.addOption(Option( FCT,        "--function","-f", Type::INT,   "Configure the activation function"));
   /* Configuration par défaut */
-  std::string filename = "iris.csv";
+  std::string filename = "iris.data";
   bool archi = false;
   double eta = 0.01;
   int epoch = 5000;
@@ -73,38 +73,34 @@ int main (int argc, char **argv) {
           i++;
         }
         else{
-          std::cout << "Please chose a file from the following list : "<<std::endl;
-          std::cout << "\033[1;36m | [1] Cancer \033[0m"<<std::endl;
-          std::cout << "\033[1;36m | [2] Iris \033[0m"<<std::endl;
-          std::cout << "\033[1;36m | [3] Spam1 \033[0m"<<std::endl;
-          std::cout << "\033[1;36m | [4] Spam2 \033[0m"<<std::endl;
-          std::cout << "\033[1;36m | [5] Colis \033[0m"<<std::endl;
-          std::cout << "\033[1;33m | [6] Select a file...\033[0m  "<<std::endl;
+          std::cout << "Please chose a file from the following list [more information in trainingSet directory] : "<<std::endl;
+          std::cout << "\033[1;36m | [1] Wisconsin Diagnostic Breast Cancer Data Set \033[0m"<<std::endl;
+          std::cout << "\033[1;36m | [2] Iris Plants Data Set \033[0m"<<std::endl;
+          std::cout << "\033[1;36m | [3] Genuine and forged banknotes Data Set \033[0m"<<std::endl;
+          std::cout << "\033[1;36m | [4] Spambase Data Set \033[0m"<<std::endl;
+          std::cout << "\033[1;33m | [5] Select a file...\033[0m  "<<std::endl;
           std::cout << "Choice : ";
           std::cin>>choice;
         }
-        while(choice < 1 || choice > 6){
+        while(choice < 1 || choice > 5){
           std::cout << "\033[1;31m Wrong input, please make a valid choice :\033[0m  ";
           std::cin>>choice;
         }
         switch(choice) {
           case 1 :
-          filename = "cancerTraining.csv";
+          filename = "cancer.data";
           break;
           case 2 :
-          filename = "iris.csv";
+          filename = "iris.data";
           break;
           case 3 :
-          filename = "spambase_57Attribs_2class.txt";
+          filename = "bank.data";
           break;
           case 4 :
-          filename = "spambase.data";
+          filename = "spam.data";
           break;
           case 5 :
-          filename = "ecoli_7attribs_8class.txt";
-          break;
-          case 6 :
-          std::cout << "Enter filename (has to be in the trainingSet dir) :";
+          std::cout << "Enter filename (has to be in trainingSet/ ) :";
           std::cin>>filename;
           break;
         }
