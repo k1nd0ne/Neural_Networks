@@ -1,6 +1,6 @@
 # Backpropagation
 
-### Installation
+### Installation/Setup
 
 
 ```sh
@@ -8,20 +8,20 @@ $ git clone https://github.com/k1nd0ne/Neural_Networks.git
 $ cd Neural_Networks
 $ make
 ```
-### Lancement
+### Lancement/Launch
 
 ```sh
 $ ./launcher
 ```
 
-ou
+ou/or
 
 ```sh
 $ ./launcher --help
 ```
  pour voir toutes les options
  
-### Lancer un serveur pour les visualisations
+### Lancer un serveur pour les visualisations/Visualisation on a local webserver
 ```sh
 $ python -m SimpleHTTPServer
 ```
