@@ -26,16 +26,15 @@ $ ./launcher --help
 $ python -m SimpleHTTPServer
 ```
 ##### pour voir le perceptron suivez le chemin suivant/To visualize the perceptron go to the following link
- - pour le ET
+ - ET logique/logical AND
 ```sh
 http://localhost:8000/javascript/?path=ET
 ```
- - pour le OU
+ - OU logique/logical OR
 ```sh
 http://localhost:8000/javascript/?path=OU
 ```
 ##### Pour voir le réseau allez sur le chemin suivant/To visualize all of the neural network go to the following link
-  - 
 ```sh
 http://localhost:8000/javascript_network/
 ```
