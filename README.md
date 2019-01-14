@@ -19,13 +19,13 @@ ou/or
 ```sh
 $ ./launcher --help
 ```
- pour voir toutes les options
+ Pour voir toutes les options/See all of the options.
  
 ### Lancer un serveur pour les visualisations/Visualisation on a local webserver
 ```sh
 $ python -m SimpleHTTPServer
 ```
-##### pour le perceptron allez sur :
+##### pour voir le perceptron suivez le chemin suivant/To visualize the perceptron go to the following link
  - pour le ET
 ```sh
 http://localhost:8000/javascript/?path=ET
@@ -34,7 +34,7 @@ http://localhost:8000/javascript/?path=ET
 ```sh
 http://localhost:8000/javascript/?path=OU
 ```
-##### pour le réseau allez sur :
+##### Pour voir le réseau allez sur le chemin suivant/To visualize all of the neural network go to the following link
   - 
 ```sh
 http://localhost:8000/javascript_network/
